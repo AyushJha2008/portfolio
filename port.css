@@ -72,9 +72,15 @@ button{
 }
 #github{
   color: violet;
-  padding: 7px;
-  border: 1px solid violet;
+  padding: 5px 7px;
   border-radius: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+#github img{
+  height: 2rem;
+  width: 2rem;
 }
 .my-logo a{
     color: var(--opposite-clr--);
@@ -622,6 +628,8 @@ button{
     box-shadow: none;
 }
 .edu-marks{
+  display: flex;
+  gap: 2rem;
     font-size: 1rem;
     font-weight: 400;
 }
