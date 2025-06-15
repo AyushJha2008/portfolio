@@ -17,12 +17,12 @@
 
 body.dark-theme{
     --primary-bg--: rgb(2, 3, 32);
-    --second-bg--: rgb(3,26,36);
-    --primary-hover--: rgb(5, 39, 54);
+    --second-bg--: rgb(6, 41, 56);
+    --primary-hover--: rgb(12, 59, 80);
     --primary-clr--: gray;
     --second-clr--: white;
     --primary-brdr--: cyan;
-    --opposite-clr--: peachpuff;
+    --opposite-clr--: rgb(243, 182, 129);
 }
 
 body{
@@ -34,11 +34,14 @@ body{
     width: 100vw;
     background-color: var(--primary-bg--);
     padding-bottom: 2rem;
+    display: flex;
+    justify-content: center;
 }
 .container header{
-    height: 4rem;
+    /* height: 3rem; */padding-top: 10px;
     display: flex;
     align-items: center;
+    width: 100vw;
 }
 a {
   text-decoration: none;
@@ -55,11 +58,11 @@ button{
     font-size: larger;
     font-weight: 600;
     display: flex;
-    justify-content: space-between;
-    margin: 0 auto;
+    justify-content: space-around;
     width: 80%;
-    margin-bottom: 2rem;
-    z-index: 10;
+    z-index: 1000;
+    position: fixed;
+    background: var(--primary-bg--);
 }
 .my-logo{
     display: flex;
@@ -99,6 +102,8 @@ button{
     display: flex;
     justify-content: space-between;
     font-size: larger;
+    margin-top: 0;
+    padding-top: 5.5rem;
 }
 .myself{
     display: flex;
@@ -109,7 +114,7 @@ button{
     font-family: "Roboto";
 }
 .myself h2{
-    background: linear-gradient(to right, #77ff5f, #d76108);
+    background: linear-gradient(to right, var(--second-clr--), var(--opposite-clr--), var(--primary-brdr--));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-size: 48px;
@@ -452,7 +457,7 @@ button{
     justify-content: space-between;
     padding: 1rem;
     gap: 12px;
-    box-shadow: #2e2e2e 0px 0px 15px 8px;
+    box-shadow: var(--primary-brdr--) 0px 0px 12px 1px;
     margin-bottom: 2rem;
     cursor: pointer;
     margin-left: 10px;
@@ -818,7 +823,7 @@ button{
   }
 
   .footer-secn span {
-    font-size: 0.8rem;
+    font-size: 1rem;
   }
 }
 
@@ -828,6 +833,6 @@ button{
   }
 
   .footer-secn span {
-    font-size: 0.75rem;
+    font-size: 1rem;
   }
 }
