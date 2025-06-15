@@ -12,6 +12,7 @@
     --primary-clr--: rgb(69, 68, 68);
     --second-clr--: black;
     --primary-brdr--: red;
+    --opposite-clr--: rgb(3, 26, 26);
 }
 
 body.dark-theme{
@@ -21,6 +22,7 @@ body.dark-theme{
     --primary-clr--: gray;
     --second-clr--: white;
     --primary-brdr--: cyan;
+    --opposite-clr--: peachpuff;
 }
 
 body{
@@ -65,14 +67,13 @@ button{
     gap: 1rem;
 }
 .my-logo img{
-    height: 2rem;
-    width: 2rem;
+    height: 1.8rem;
+    width: 1.8rem;
 }
-.my-logo h3{
-    font-weight: 600;
-    border: 2px solid var(--primary-brdr--);
-    padding: 3px 12px;
-    border-radius: 13px;
+.my-logo h4{
+    padding: 3px;
+    color: var(--opposite-clr--);
+    border-bottom: 2px solid var(--opposite-clr--);
 }
 .nav{
     display: flex;
@@ -142,10 +143,12 @@ button{
 
 @media (max-width: 1024px) {
   .head {
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     gap: 1rem;
     width: 90%;
+    margin: 1rem;
+    margin-top: 0;
   }
 
   .nav {
