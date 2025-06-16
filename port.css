@@ -55,6 +55,7 @@ button{
     background: none;
 }
 .head{
+  height: 4rem;
     font-size: larger;
     font-weight: 600;
     display: flex;
@@ -94,16 +95,20 @@ button{
     gap: 1.8rem;
 }
 
-
+.nav a:hover{
+  color: var(--primary-brdr--);
+}
+.menu{
+  display: none;
+}
 .about{
     margin: 0 auto;
     width: 80%;
-    margin-top: 1rem;
     display: flex;
     justify-content: space-between;
     font-size: larger;
     margin-top: 0;
-    padding-top: 5.5rem;
+    padding-top: 8.5rem;
 }
 .myself{
     display: flex;
@@ -169,17 +174,16 @@ button{
   }
 
   .nav {
-    display: none;
+    /* display: none; */
   }
 
   .myself h2 {
     font-size: 36px;
-    text-align: center;
+    text-align: left;
   }
 
   .myself p, .myself a {
-    text-align: center;
-    align-self: center;
+    text-align: left;
     font-size: large;
   }
 }
@@ -196,6 +200,9 @@ button{
     align-items: center;
     text-align: center;
   }
+  .myself p, .myself h2{
+    text-align: center;
+  }
 
   .my-img img {
     height: 18rem;
@@ -203,18 +210,32 @@ button{
   }
 
   .nav {
+    display: none;
     flex-direction: column;
-    align-items: center;
+    align-items: end;
     gap: 1rem;
+    
+    
   }
+  .menu{
+    display: block;
+  }
+  .menu :hover{
+    transform: scale(1.09);
+    fill: blueviolet;
+  }
+  .menu path{
+    fill: var(--opposite-clr--);  }
 }
 
 @media (max-width: 480px) {
   .myself h2 {
     font-size: 28px;
+    text-align: center;
   }
 
   .myself a {
+    text-align: center;
     width: 100%;
   }
 
