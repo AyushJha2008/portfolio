@@ -63,6 +63,7 @@ button{
     z-index: 1000;
     position: fixed;
     background: var(--primary-bg--);
+    border-bottom: 2px solid var(--primary-brdr--);
 }
 .my-logo{
     display: flex;
