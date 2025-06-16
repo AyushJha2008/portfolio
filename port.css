@@ -118,7 +118,8 @@ button{
     font-family: "Roboto";
 }
 .myself h2{
-    background: linear-gradient(to right, var(--second-clr--), var(--opposite-clr--), var(--primary-brdr--));
+    /* background: linear-gradient(to right, var(--second-clr--), var(--opposite-clr--), var(--primary-brdr--)); */
+    background: linear-gradient(to right, blueviolet, green, var(--primary-brdr--));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-size: 48px;
