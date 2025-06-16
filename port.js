@@ -11,9 +11,8 @@ function onClick(){
 }
 theme.addEventListener("click", onClick)
 
-// function showMenu(){
-//     console.log("clicked");
-//     nav.style.display = "flex"
-// }
+function showMenu(){
+    nav.style.display = nav.style.display === "flex"? "none": "flex"
+}
 
-// menu.addEventListener("click", showMenu())
+menu.addEventListener("click", showMenu)
