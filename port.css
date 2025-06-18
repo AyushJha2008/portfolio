@@ -238,6 +238,12 @@ button{
   .menu{
     display: block;
   }
+  .github2{
+    display: block;
+  }
+  #github{
+    display: none;
+  }
   .menu :hover{
     transform: scale(1.09);
     fill: blueviolet;
@@ -254,6 +260,10 @@ button{
   .myself h2 {
     font-size: 24px;
     text-align: center;
+  }
+  .head{
+    justify-content: space-between;
+    padding: 0 1rem;
   }
 
   .myself a {
