@@ -74,10 +74,7 @@ button{
     height: 1.8rem;
     width: 1.8rem;
 }
-#github2{
-  display: none;
-}
-#github1 #github2{
+#github{
   color: violet;
   padding: 5px 7px;
   border-radius: 1rem;
@@ -85,7 +82,7 @@ button{
   align-items: center;
   gap: 5px;
 }
-#github1 img{
+#github img{
   height: 2rem;
   width: 2rem;
 }
@@ -241,12 +238,6 @@ button{
   .menu{
     display: block;
   }
-  #github1{
-    display: none;
-  }
-  #github2{
-    display: block;
-  }
   .menu :hover{
     transform: scale(1.09);
     fill: blueviolet;
@@ -257,7 +248,7 @@ button{
 
 @media (max-width: 480px) {
   .about{
-    width: 99vw;
+    width: 100vw;
     margin: 0 auto;
   }
   .myself h2 {
