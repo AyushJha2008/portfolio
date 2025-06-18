@@ -459,12 +459,12 @@ button{
     align-items: center;
     justify-content: center;
     height: 4rem;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
 }
 .project-head p{
     font-size: x-large;
     color: var(--primary-clr--);
-    margin: 0 10px;
+    margin: 0 1.5rem;
 }
 .project-grid{
     display: grid;
@@ -594,7 +594,7 @@ button{
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
 }
 .edu-head p{
     font-size: x-large;
@@ -726,6 +726,7 @@ button{
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    margin: 0 1.5rem;
 }
 .event-head p{
     font-size: x-large;
