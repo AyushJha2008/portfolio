@@ -74,7 +74,10 @@ button{
     height: 1.8rem;
     width: 1.8rem;
 }
-#github{
+#github2{
+  display: none;
+}
+#github1 #github2{
   color: violet;
   padding: 5px 7px;
   border-radius: 1rem;
@@ -82,7 +85,7 @@ button{
   align-items: center;
   gap: 5px;
 }
-#github img{
+#github1 img{
   height: 2rem;
   width: 2rem;
 }
@@ -236,6 +239,12 @@ button{
     transition: all 0.3s ease
   }
   .menu{
+    display: block;
+  }
+  #github1{
+    display: none;
+  }
+  #github2{
     display: block;
   }
   .menu :hover{
