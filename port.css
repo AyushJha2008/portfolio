@@ -247,6 +247,10 @@ button{
 }
 
 @media (max-width: 480px) {
+  .about{
+    width: 90vw;
+    margin: 0 auto;
+  }
   .myself h2 {
     font-size: 20px;
     text-align: center;
