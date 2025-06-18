@@ -86,6 +86,9 @@ button{
   height: 2rem;
   width: 2rem;
 }
+.github2{
+  display: none;
+}
 .my-logo a{
     color: var(--opposite-clr--);
     border-bottom: 2px solid var(--opposite-clr--);
