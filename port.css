@@ -73,7 +73,6 @@ button{
 .my-logo img{
     height: 1.8rem;
     width: 1.8rem;
-    user-select: none;
 }
 #github{
   color: violet;
@@ -122,7 +121,7 @@ button{
     gap: 1.5rem;
     width: 50%;
     font-family: "Roboto";
-
+    animation: fromRight 1s ease forwards;
 }
 .myself h2{
     /* background: linear-gradient(to right, var(--second-clr--), var(--opposite-clr--), var(--primary-brdr--)); */
@@ -174,13 +173,60 @@ button{
     height: 25rem;
     width: 25rem;
     border-radius: 50%;
-    border: 3px solid var(--second-clr--);
-    animation: load 30s linear infinite;
+    border: 3px solid var(--primary-brdr--);
+    animation: bounce 8s linear infinite;
 }
-@keyframes load{
-  border-bottom: red;
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  25% {
+    transform: translateY(-25px);
+  }
+  50% {
+    transform: translateY(0);
+  }
+  75% {
+    transform: translateY(25px);
+  }
+}
+
+@keyframes fromLeft  {
+    0%{
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+    100%{
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fromLeft  {
+    0%{
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+    100%{
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fromRight  {
+    0%{
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    100%{
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
 .my-img img:hover{
+  animation: none;
+  box-shadow: var(--primary-brdr--) 0px 0px 15px 5px;
 }
 
 .my-img{
@@ -258,7 +304,6 @@ button{
   }
   .menu :hover{
     transform: scale(1.09);
-    fill: blueviolet;
   }
   .menu path{
     fill: var(--opposite-clr--);  }
@@ -290,8 +335,8 @@ button{
   }
 
   .my-img img {
-    height: 14rem;
-    width: 14rem;
+    height: 12rem;
+    width: 12rem;
   }
 }
 
