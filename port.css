@@ -32,7 +32,7 @@ body{
 }
 .container{
     width: 100vw;
-    background-color: var(--primary-bg--);
+    background-color: transparent;
     padding-bottom: 2rem;
     display: flex;
     justify-content: center;
@@ -108,6 +108,7 @@ button{
     margin: 0 auto;
     width: 80%;
     display: flex;
+    justify-content: space-between;
     font-size: larger;
     margin-top: 0;
     padding-top: 7.5rem;
@@ -215,6 +216,23 @@ button{
 .my-img{
     border-radius: 50%;
 }
+
+#particles-js {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* Behind everything */
+  background: transparent;
+  pointer-events: none;
+}
+
+.container {
+  position: relative;
+  z-index: 1;
+}
+
 
 /* responsive */
 
