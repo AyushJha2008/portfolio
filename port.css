@@ -111,8 +111,8 @@ button{
     justify-content: space-between;
     font-size: larger;
     margin-top: 0;
-    padding-top: 8.5rem;
-    padding-bottom: 2rem;
+    padding-top: 7.5rem;
+    padding-bottom: 1rem;
 }
 .myself{
     display: flex;
@@ -123,27 +123,35 @@ button{
     font-family: "Roboto";
     animation: fromRight 1s ease forwards;
 }
-.myself h2{
-    /* background: linear-gradient(to right, var(--second-clr--), var(--opposite-clr--), var(--primary-brdr--)); */
+.role{
+  display: flex;
+  align-items: center;
+}
+.role-in{
+  font-size: 2.72rem;
+  font-weight: bold;
+  padding-right: 0.7rem;
+}
+.typing-container{
     background: linear-gradient(to right, blueviolet, green, var(--primary-brdr--));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    font-size: 48px;
+    font-size: 2.72rem;
     font-weight: bold;
     border-right: 5px solid var(--opposite-clr--);
     overflow: hidden;
     font-size: 2.72rem;
     white-space: nowrap;
-    animation: typing 3.5s steps(30, end) alternate infinite, blink-carpet  0.5s step-end infinite;
     user-select: none;
-}
-@keyframes typing {
-  from{width:0}
-  to {width: 100%}
-}@keyframes blink-carpet{
-  from, to {border-color: transparent}
-  50% {border-color: var(--opposite-clr--)}
-}
+    animation: blinkCursor 0.7s step-end infinite;
+    }
+
+    @keyframes blinkCursor {
+      50% {
+        border-color: transparent;
+      }
+    }
+
 .myself p{
     color:  var(--primary-clr--);
     font-size: larger;
@@ -177,31 +185,7 @@ button{
     animation: bounce 8s linear infinite;
 }
 
-@keyframes bounce {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  25% {
-    transform: translateY(-25px);
-  }
-  50% {
-    transform: translateY(0);
-  }
-  75% {
-    transform: translateY(25px);
-  }
-}
 
-@keyframes fromLeft  {
-    0%{
-        opacity: 0;
-        transform: translateX(-100%);
-    }
-    100%{
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
 
 @keyframes fromLeft  {
     0%{
@@ -249,7 +233,7 @@ button{
     /* display: none; */
   }
 
-  .myself h2 {
+  .typing-container, .role-in {
     font-size: 36px;
     text-align: left;
   }
@@ -273,8 +257,11 @@ button{
     align-items: center;
     text-align: center;
   }
-  .myself p, .myself h2{
+  .myself p, .typing-container, .role-in{
     text-align: center;
+  }
+  .myself p{
+    font-size: 1.1rem;
   }
 
   .my-img img {
@@ -317,7 +304,7 @@ button{
   .myself{
     gap: 1rem;
   }
-  .myself h2 {
+  .typing-container, .role-in {
     font-size: 24px;
     text-align: center;
   }
