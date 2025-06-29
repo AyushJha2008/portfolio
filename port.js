@@ -72,38 +72,14 @@ function loadVanta() {
     scaleMobile: 1,
     backgroundColor: isDarkTheme ? 0x000000 : 0xfaebd7, // black / antiquewhite
     color: isDarkTheme ? 0x4600d3 : 0xFFA500, // darkblue / red,
-
-    //qui
-    // backgroundColor: isDarkTheme ? 0x000000 : 0xfaebd7, // black / antiquewhite
-    // color: isDarkTheme ? 0x4600d3 : 0xff0000, // darkblue / red
     points: 17.00,
-    opacity: 0,
     spacing: 16.00
   });
+
 
 
   vantaEffect = VANTA.NET({
     el: ".project-cont",
-    mouseControls: true,
-    touchControls: true,
-    gyroControls: false,
-    minHeight: 20.00,
-    minWidth: 800.00,
-    scale: 1.00,
-    scaleMobile: 1,
-    backgroundColor: isDarkTheme ? 0x000000 : 0xfaebd7, // black / antiquewhite
-    color: isDarkTheme ? 0x4600d3 : 0xff0000, // darkblue / red,
-
-    //qui
-    // backgroundColor: isDarkTheme ? 0x000000 : 0xfaebd7, // black / antiquewhite
-    // color: isDarkTheme ? 0x4600d3 : 0xff0000, // darkblue / red
-    points: 17.00,
-    opacity: 0,
-    spacing: 16.00
-  });
-
-  vantaEffect = VANTA.NET({
-    el: ".event-cont",
     mouseControls: true,
     touchControls: true,
     gyroControls: true,
@@ -114,10 +90,8 @@ function loadVanta() {
     backgroundColor: isDarkTheme ? 0x000000 : 0xfaebd7, // black / antiquewhite
     color: isDarkTheme ? 0x4600d3 : 0xFFA500, // darkblue / red,
     points: 17.00,
-    opacity: 0,
     spacing: 16.00
   });
-
 
   
 }

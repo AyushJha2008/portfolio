@@ -525,12 +525,13 @@ button{
     background-color: var(--primary-bg--);
     /* background-color: transparent; */
     width: 100vw;
-    display: flex;
-    flex-direction: column;
     gap: 2rem;
+    overflow-x: hidden;
 }
+
 .project-head{
     text-align: center;
+    padding-bottom: 2rem;
 }
 .project-head h1{
     background-color: blueviolet;
