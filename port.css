@@ -19,7 +19,7 @@ body.dark-theme{
     --primary-bg--: rgb(2, 3, 32);
     --second-bg--: rgb(6, 41, 56);
     --primary-hover--: rgb(12, 59, 80);
-    --primary-clr--: gray;
+    --primary-clr--: rgb(156, 150, 150);
     --second-clr--: white;
     --primary-brdr--: cyan;
     --opposite-clr--: rgb(243, 182, 129);
@@ -36,6 +36,7 @@ body{
     padding-bottom: 2rem;
     display: flex;
     justify-content: center;
+    overflow-x: hidden;
 }
 .container header{
     display: flex;
@@ -133,7 +134,7 @@ button{
   padding-right: 0.7rem;
 }
 .typing-container{
-    background: linear-gradient(to right, blueviolet, green, var(--primary-brdr--));
+    background: linear-gradient(to right, rgb(255, 0, 238), green, var(--primary-brdr--));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-size: 2.72rem;
@@ -217,22 +218,6 @@ button{
     border-radius: 50%;
 }
 
-#particles-js {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1; /* Behind everything */
-  background: transparent;
-  pointer-events: none;
-}
-
-.container {
-  position: relative;
-  z-index: 1;
-}
-
 
 /* responsive */
 
@@ -244,10 +229,6 @@ button{
     width: 90%;
     margin: 1rem;
     margin-top: 0;
-  }
-
-  .nav {
-    /* display: none; */
   }
 
   .typing-container, .role-in {
@@ -349,7 +330,7 @@ button{
 .skill-cont{
     width: 100vw;
     background-color: var(--second-bg--);
-    padding-bottom: 1rem;
+    padding-bottom: 2rem;
 }
 .skills{
     display: flex;
@@ -401,6 +382,7 @@ button{
     grid-template-columns: auto auto;
     box-sizing: border-box;
     gap: 1rem;
+    /* padding-bottom: 1rem; */
     user-select: none;
 }
 .other-skill{
@@ -541,6 +523,7 @@ button{
 
 .project-cont{
     background-color: var(--primary-bg--);
+    /* background-color: transparent; */
     width: 100vw;
     display: flex;
     flex-direction: column;

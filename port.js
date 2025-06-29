@@ -13,7 +13,7 @@ let currentText = "";
 // Typing effect
 const roles = [
   "C.E. undergraduate",
-  "Freelancer and Intern",
+  "Freelancer & Intern",
   "FullStack Web Developer"
 ];
 
@@ -52,7 +52,7 @@ menu.addEventListener("click", () => {
   nav.style.display = nav.style.display === "flex" ? "none" : "flex";
 });
 
-// VANTA setup
+
 let vantaEffect;
 
 function loadVanta() {
@@ -60,25 +60,74 @@ function loadVanta() {
 
   const isDarkTheme = document.body.classList.contains("dark-theme");
 
+
   vantaEffect = VANTA.NET({
-    el: "#about",
+    el: ".container",
     mouseControls: true,
     touchControls: true,
     gyroControls: false,
     minHeight: 200.00,
-    minWidth: 200.00,
+    minWidth: 800.00,
     scale: 1.00,
-    scaleMobile: 1.00,
-    backgroundColor: isDarkTheme ? 0x001f3f : 0xfaebd7, // navyblue / antiquewhite
-    color: isDarkTheme ? 0x00ffff : 0xff0000, // cyan / red
+    scaleMobile: 1,
+    backgroundColor: isDarkTheme ? 0x000000 : 0xfaebd7, // black / antiquewhite
+    color: isDarkTheme ? 0x4600d3 : 0xFFA500, // darkblue / red,
+
+    //qui
+    // backgroundColor: isDarkTheme ? 0x000000 : 0xfaebd7, // black / antiquewhite
+    // color: isDarkTheme ? 0x4600d3 : 0xff0000, // darkblue / red
     points: 17.00,
+    opacity: 0,
     spacing: 16.00
   });
+
+
+  vantaEffect = VANTA.NET({
+    el: ".project-cont",
+    mouseControls: true,
+    touchControls: true,
+    gyroControls: false,
+    minHeight: 20.00,
+    minWidth: 800.00,
+    scale: 1.00,
+    scaleMobile: 1,
+    backgroundColor: isDarkTheme ? 0x000000 : 0xfaebd7, // black / antiquewhite
+    color: isDarkTheme ? 0x4600d3 : 0xff0000, // darkblue / red,
+
+    //qui
+    // backgroundColor: isDarkTheme ? 0x000000 : 0xfaebd7, // black / antiquewhite
+    // color: isDarkTheme ? 0x4600d3 : 0xff0000, // darkblue / red
+    points: 17.00,
+    opacity: 0,
+    spacing: 16.00
+  });
+
+  vantaEffect = VANTA.NET({
+    el: ".event-cont",
+    mouseControls: true,
+    touchControls: true,
+    gyroControls: true,
+    minHeight: 200.00,
+    minWidth: 800.00,
+    scale: 1.00,
+    scaleMobile: 1,
+    backgroundColor: isDarkTheme ? 0x000000 : 0xfaebd7, // black / antiquewhite
+    color: isDarkTheme ? 0x4600d3 : 0xFFA500, // darkblue / red,
+    points: 17.00,
+    opacity: 0,
+    spacing: 16.00
+  });
+
+
+  
 }
 
-loadVanta(); // Load Vanta on initial page load
+loadVanta(); 
 
-// Theme toggle + Vanta reload
+
+
+
+
 function onClick() {
   document.body.classList.toggle("dark-theme");
   icon.src = document.body.classList.contains("dark-theme")
