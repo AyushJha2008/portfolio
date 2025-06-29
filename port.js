@@ -65,7 +65,7 @@ function loadVanta() {
     el: ".container",
     mouseControls: true,
     touchControls: true,
-    gyroControls: false,
+    gyroControls: true,
     minHeight: 200.00,
     minWidth: 800.00,
     scale: 1.00,
