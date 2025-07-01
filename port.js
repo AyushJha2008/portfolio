@@ -61,45 +61,61 @@ function loadVanta() {
   const isDarkTheme = document.body.classList.contains("dark-theme");
 
 
-  vantaEffect = VANTA.NET({
+  vantaEffect = VANTA.WAVES({
     el: ".container",
     mouseControls: true,
     touchControls: true,
-    gyroControls: true,
+    gyroControls: false,
     minHeight: 200.00,
     minWidth: 800.00,
     scale: 1.00,
     scaleMobile: 1,
-    backgroundColor: isDarkTheme ? 0x000000 : 0xfaebd7, // black / antiquewhite
-    color: isDarkTheme ? 0x4600d3 : 0xFFA500, // darkblue / red,
-    points: 17.00,
-    spacing: 16.00
+    // backgroundColor: isDarkTheme ? 0x000000 : 0xfaebd7, // black / antiquewhite
+    color: isDarkTheme ? 0x020320 :  0xC28B30, // darkblue / red,
   });
 
+  vantaEffect = VANTA.WAVES({
+    el: ".skill-cont",
+    mouseControls: true,
+    touchControls: true,
+    gyroControls: false,
+    minHeight: 200.00,
+    minWidth: 800.00,
+    scale: 1.00,
+    scaleMobile: 1,
+    // backgroundColor: isDarkTheme ? 0x000000 : 0xfaebd7, // black / antiquewhite
+    color: isDarkTheme ? 0x022030 : 0xCFA85F, // darkblue / red,
+  });
 
-
-  vantaEffect = VANTA.NET({
+  vantaEffect = VANTA.WAVES({
     el: ".project-cont",
     mouseControls: true,
     touchControls: true,
-    gyroControls: true,
+    gyroControls: false,
     minHeight: 200.00,
     minWidth: 800.00,
     scale: 1.00,
     scaleMobile: 1,
-    backgroundColor: isDarkTheme ? 0x000000 : 0xfaebd7, // black / antiquewhite
-    color: isDarkTheme ? 0x4600d3 : 0xFFA500, // darkblue / red,
-    points: 17.00,
-    spacing: 16.00
+    // backgroundColor: isDarkTheme ? 0x000000 : 0xfaebd7, // black / antiquewhite
+    color: isDarkTheme ? 0x020320 :  0xC28B30, // darkblue / red,
   });
 
-  
+  vantaEffect = VANTA.WAVES({
+    el: ".edu-cont",
+    mouseControls: true,
+    touchControls: true,
+    gyroControls: false,
+    minHeight: 200.00,
+    minWidth: 800.00,
+    scale: 1.00,
+    scaleMobile: 1,
+    // backgroundColor: isDarkTheme ? 0x000000 : 0xfaebd7, // black / antiquewhite
+    color: isDarkTheme ? 0x022030 : 0xCFA85F, // darkblue / red,
+  });
 }
 
+
 loadVanta(); 
-
-
-
 
 
 function onClick() {
@@ -111,3 +127,22 @@ function onClick() {
 }
 
 theme.addEventListener("click", onClick);
+
+//load lazy
+const boxes = document.querySelectorAll('.box');
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('show');
+      // If you don't want to animate again, unobserve after showing
+      observer.unobserve(entry.target);
+    }
+  });
+}, {
+  threshold: 0.15  // Trigger when 10% is visible
+});
+
+boxes.forEach(box => observer.observe(box));
+
+
