@@ -70,50 +70,10 @@ function loadVanta() {
     minWidth: 800.00,
     scale: 1.00,
     scaleMobile: 1,
-    // backgroundColor: isDarkTheme ? 0x000000 : 0xfaebd7, // black / antiquewhite
     color: isDarkTheme ? 0x020320 :  0xC28B30, // darkblue / red,
   });
-
-  vantaEffect = VANTA.WAVES({
-    el: ".skill-cont",
-    mouseControls: true,
-    touchControls: true,
-    gyroControls: false,
-    minHeight: 200.00,
-    minWidth: 800.00,
-    scale: 1.00,
-    scaleMobile: 1,
-    // backgroundColor: isDarkTheme ? 0x000000 : 0xfaebd7, // black / antiquewhite
-    color: isDarkTheme ? 0x022030 : 0xCFA85F, // darkblue / red,
-  });
-
-  vantaEffect = VANTA.WAVES({
-    el: ".project-cont",
-    mouseControls: true,
-    touchControls: true,
-    gyroControls: false,
-    minHeight: 200.00,
-    minWidth: 800.00,
-    scale: 1.00,
-    scaleMobile: 1,
-    // backgroundColor: isDarkTheme ? 0x000000 : 0xfaebd7, // black / antiquewhite
-    color: isDarkTheme ? 0x020320 :  0xC28B30, // darkblue / red,
-  });
-
-  vantaEffect = VANTA.WAVES({
-    el: ".edu-cont",
-    mouseControls: true,
-    touchControls: true,
-    gyroControls: false,
-    minHeight: 200.00,
-    minWidth: 800.00,
-    scale: 1.00,
-    scaleMobile: 1,
-    // backgroundColor: isDarkTheme ? 0x000000 : 0xfaebd7, // black / antiquewhite
-    color: isDarkTheme ? 0x022030 : 0xCFA85F, // darkblue / red,
-  });
+  
 }
-
 
 loadVanta(); 
 
@@ -144,5 +104,3 @@ const observer = new IntersectionObserver((entries) => {
 });
 
 boxes.forEach(box => observer.observe(box));
-
-

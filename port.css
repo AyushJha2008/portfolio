@@ -450,6 +450,8 @@ button{
   .skill-item {
     justify-content: center;
     text-align: center;
+    gap: 0.3rem;
+    padding: 0.5rem 0.7rem;
   }
 
   .skill-head {
