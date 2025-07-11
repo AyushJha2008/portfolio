@@ -53,31 +53,11 @@ menu.addEventListener("click", () => {
 });
 
 
-let vantaEffect;
-
-function loadVanta() {
-  if (vantaEffect) vantaEffect.destroy();
 
   const isDarkTheme = document.body.classList.contains("dark-theme");
 
 
-  vantaEffect = VANTA.WAVES({
-    el: ".container",
-    mouseControls: true,
-    touchControls: true,
-    gyroControls: false,
-    minHeight: 200.00,
-    minWidth: 800.00,
-    scale: 1.00,
-    scaleMobile: 1,
-    color: isDarkTheme ? 0x020320 :  0xC28B30, // darkblue / red,
-  });
   
-}
-
-loadVanta(); 
-
-
 function onClick() {
   document.body.classList.toggle("dark-theme");
   icon.src = document.body.classList.contains("dark-theme")
@@ -100,7 +80,7 @@ const observer = new IntersectionObserver((entries) => {
     }
   });
 }, {
-  threshold: 0.15  // Trigger when 10% is visible
+  threshold: 0.15  // Trigger when 15% is visible
 });
 
 boxes.forEach(box => observer.observe(box));

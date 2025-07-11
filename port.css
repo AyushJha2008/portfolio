@@ -19,7 +19,7 @@ body.dark-theme{
     --primary-bg--: rgb(2, 3, 32);
     --second-bg--: rgb(6, 41, 56);
     --primary-hover--: rgb(12, 59, 80);
-    --primary-clr--: rgb(190, 186, 186);
+    --primary-clr--: rgb(159, 153, 153);
     --second-clr--: white;
     --primary-brdr--: cyan;
     --opposite-clr--: rgb(243, 182, 129);
@@ -32,7 +32,7 @@ body{
 }
 .container{
     width: 100vw;
-    background-color: transparent;
+    background-color: var(--primary-bg--);
     padding-bottom: 2rem;
     display: flex;
     justify-content: center;
@@ -72,8 +72,8 @@ button{
     gap: 0.5rem;
 }
 .my-logo img{
-    height: 1.8rem;
-    width: 1.8rem;
+    height: 4.2rem;
+    width: 3.8rem;
 }
 #github{
   color: violet;
@@ -324,6 +324,10 @@ button{
     height: 12rem;
     width: 12rem;
   }
+  .my-logo img{
+    height: 3.2rem;
+    width: 2.8rem;
+  }
 }
 
 
@@ -454,6 +458,8 @@ button{
     padding: 0.5rem 0.7rem;
   }
 
+
+
   .skill-head {
     font-size: 1.5rem;
     height: auto;
@@ -557,6 +563,7 @@ button{
     margin: 0 auto;
     margin-bottom: 3rem;
     user-select: none;
+    align-items: center;
 }
 .project-secn{
     background-color: var(--second-bg--);
@@ -567,13 +574,13 @@ button{
     justify-content: space-between;
     padding: 1rem;
     gap: 12px;
-    box-shadow: var(--primary-brdr--) 0px 0px 12px 1px;
-    margin-bottom: 2rem;
+    box-shadow: var(--primary-brdr--) 0px 0px 15px 1px;
+    margin-bottom: 1rem;
     cursor: pointer;
 }
 .project-secn:hover{
-    transform: scale(1.07);
-    box-shadow: var(--primary-clr--) 0px 0px 12px 1px;
+    transform: scaleX(1.1rem);
+    box-shadow: var(--primary-clr--) 0px 0px 15px 1px;
     background-color: var(--primary-bg--);
 }
 .output-secn img{
