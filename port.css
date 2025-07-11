@@ -371,7 +371,7 @@ button{
     padding: 5px;
 }
 .skill-box{
-    border: 1px solid var(--primary-brdr--);
+    border: 2px solid var(--primary-brdr--);
     box-shadow: var(--primary-brdr--) 0px 0px 8px 1px;
     border-radius: 15px;
     padding: 1rem;
@@ -563,7 +563,7 @@ button{
     margin: 0 auto;
     margin-bottom: 3rem;
     user-select: none;
-    align-items: center;
+    place-items: center;
 }
 .project-secn{
     background-color: var(--second-bg--);
