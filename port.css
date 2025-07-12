@@ -64,7 +64,7 @@ button{
     z-index: 1000;
     position: fixed;
     background: var(--primary-bg--);
-    border-bottom: 2px solid var(--primary-brdr--);
+    box-shadow: 0px 0px 10px 2px var(--primary-clr--);
 }
 .my-logo{
     display: flex;
@@ -72,8 +72,8 @@ button{
     gap: 0.5rem;
 }
 .my-logo img{
-    height: 4.2rem;
-    width: 3.8rem;
+    height: 5rem;
+    width: 5rem;
 }
 #github{
   color: violet;
@@ -312,7 +312,7 @@ button{
   }
   .head{
     justify-content: space-between;
-    padding: 0 1rem;
+    padding: 0 0.3rem;
   }
 
   .myself a {
@@ -325,8 +325,8 @@ button{
     width: 12rem;
   }
   .my-logo img{
-    height: 3.2rem;
-    width: 2.8rem;
+    height: 4rem;
+    width: 4rem;
   }
 }
 
@@ -584,6 +584,20 @@ button{
 }
 .hide-project{
   display: none;
+}
+.project-cancel{
+  display: flex;
+  justify-content: right;
+  display: none;
+}
+.project-cancel span{
+  background-color: red;
+  padding: 0px 6px;
+  font-size: x-large;
+  font-weight: bolder;
+}
+.project-cancel span:hover{
+  background-color: var(--second-bg--);
 }
 .output-secn img{
     width: 100%;

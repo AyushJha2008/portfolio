@@ -4,15 +4,23 @@ const icon = document.querySelector("#theme-icon");
 const menu = document.querySelector(".menu");
 const nav = document.querySelector(".nav");
 const typingElement = document.getElementById("typing");
-const project = document.querySelectorAll(".project-secn")
+const project = document.querySelectorAll(".project-secn");
 
 project.forEach((proj)=>{
   proj.addEventListener("click", () =>{
     const hideProj = proj.querySelector(".hide-project");
-    const projDisplay = window.getComputedStyle(hideProj).display;
-    hideProj.style.display = projDisplay ===  "none"? "block": "none"
+    const cancelBtn = proj.querySelector(".project-cancel");
+    hideProj.style.display = "block"
+    cancelBtn.style.display = "flex"
+  cancelBtn.addEventListener("click", (e)=>{
+    e.stopPropagation();
+  hideProj.style.display = "none";
+  cancelBtn.style.display = "none"
+})
   })
 })
+
+
 let roleIndex = 0;
 let charIndex = 0;
 let isDeleting = false;
