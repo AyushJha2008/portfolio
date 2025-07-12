@@ -574,14 +574,16 @@ button{
     justify-content: space-between;
     padding: 1rem;
     gap: 12px;
-    box-shadow: var(--primary-brdr--) 0px 0px 15px 1px;
+    box-shadow: var(--primary-brdr--) 0px 0px 12px 1px;
     margin-bottom: 1rem;
     cursor: pointer;
 }
 .project-secn:hover{
-    transform: scaleX(1.1rem);
     box-shadow: var(--primary-clr--) 0px 0px 15px 1px;
     background-color: var(--primary-bg--);
+}
+.hide-project{
+  display: none;
 }
 .output-secn img{
     width: 100%;
@@ -617,9 +619,10 @@ button{
 .project-btns{
     display: flex;
     gap: 1rem;
+    margin-top: 1rem;
 }
 .project-btns a{
-    font-size: medium;
+    font-size: large;
     padding: 5px 8px;
     border-radius: 10px;
     width: 100%;
@@ -630,13 +633,13 @@ button{
     background-color: blueviolet;
 }
 .proj-detail:hover{
-    background-color: var(--primary-bg--);
+    background-color: var(--second-bg--);
 }
 .proj-view{
     background-color: red;
 }
 .proj-view:hover{
-    background-color: var(--primary-bg--);
+    background-color: var(--second-bg--);
 }
 
 /* responsive */
@@ -733,7 +736,7 @@ button{
 .edu-sec{
     margin: 0 auto;
     border: var(--primary-brdr--) 1px solid;
-    box-shadow: var(--primary-brdr--) 0px 0px 12px 1px;
+    box-shadow: var(--primary-brdr--) 0px 0px 10px 1px;
     background-color: var(--primary-bg--);
     border-radius: 12px;
     padding: 2rem 2rem;
@@ -743,10 +746,11 @@ button{
     width: 100%;
     max-width: 700px;
     word-wrap: break-word;
+    transition: transform 0.3s ease-in-out; 
 }
 .edu-sec:hover{
     transform: translateY(-8px);
-    transition: transform 0.3s ease-in-out; 
+    
     cursor: pointer;
     box-shadow: none;
 }

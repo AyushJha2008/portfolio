@@ -4,7 +4,15 @@ const icon = document.querySelector("#theme-icon");
 const menu = document.querySelector(".menu");
 const nav = document.querySelector(".nav");
 const typingElement = document.getElementById("typing");
+const project = document.querySelectorAll(".project-secn")
 
+project.forEach((proj)=>{
+  proj.addEventListener("click", () =>{
+    const hideProj = proj.querySelector(".hide-project");
+    const projDisplay = window.getComputedStyle(hideProj).display;
+    hideProj.style.display = projDisplay ===  "none"? "block": "none"
+  })
+})
 let roleIndex = 0;
 let charIndex = 0;
 let isDeleting = false;
@@ -52,18 +60,13 @@ menu.addEventListener("click", () => {
   nav.style.display = nav.style.display === "flex" ? "none" : "flex";
 });
 
-
-
   const isDarkTheme = document.body.classList.contains("dark-theme");
 
-
-  
 function onClick() {
   document.body.classList.toggle("dark-theme");
   icon.src = document.body.classList.contains("dark-theme")
     ? "assets/moon.png"
     : "assets/sun.png";
-  loadVanta(); // Reload Vanta with new theme colors
 }
 
 theme.addEventListener("click", onClick);
