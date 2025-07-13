@@ -184,10 +184,43 @@ button{
     width: 25rem;
     border-radius: 50%;
     border: 3px solid var(--primary-brdr--);
-    animation: bounce 8s linear infinite;
+    animation: img-bg 2s linear infinite;
 }
 
+@keyframes img-bg{
+  0%{
+    box-shadow: 0px 25px 50px rgb(255, 0, 238), 0px -20px 50px rgb(255, 0, 238);
+    border-color: rgb(255, 0, 238);
+  }
+  25%{
+    box-shadow: 30px 0px 50px var(--primary-brdr--), -20px 0px 50px var(--primary-brdr--);
+    border-color: var(--primary-brdr--);
+  }
+  50%{
+    box-shadow: 0px -25px 50px var(--opposite-clr--), 0px 25px 50px var(--opposite-clr--);
+    border-color: var(--opposite-clr--);
+  }
+  75%{
+    box-shadow: -25px 0px 50px green, 25px 0px 50px green;
+    border-color: green;
+  }
+  100%{
+    box-shadow: 0px 25px 50px rgb(255, 0, 238), 0px -25px 50px rgb(255, 0, 238);
+    border-color: rgb(255, 0, 238);
+  }
+}
 
+@keyframes contBg{
+  0%{
+    background-color: var(--primary-bg--);
+  }
+  50%{
+    background-color: var(--second-bg--);
+  }
+  100%{
+    background-color: var(--primary-bg--);
+  }
+}
 
 @keyframes fromLeft  {
     0%{
@@ -212,7 +245,6 @@ button{
 }
 .my-img img:hover{
   animation: none;
-  box-shadow: var(--primary-brdr--) 0px 0px 15px 5px;
 }
 
 .my-img{
@@ -326,12 +358,11 @@ button{
   }
 }
 
-
-
 .skill-cont{
     width: 100vw;
     background-color: var(--second-bg--);
     padding-bottom: 2rem;
+    animation: contBg 2s linear infinite;
 }
 .skills{
     display: flex;
@@ -679,7 +710,6 @@ button{
   }
 }
 
-
 .edu-cont{
     background-color: var(--second-bg--);
     color: var(--primary-clr--);
@@ -778,26 +808,18 @@ button{
 /* responsive */
 
 @media (max-width: 768px) {
-  .edu-grid {
-    width: 85%;
-  }
+  .edu-grid {  width: 85%; }
 
-  .edu-place {
-    align-items: flex-start;
-  }
+  .edu-place { align-items: flex-start; }
 
-  .edu-head p{
-    font-size: larger;
-  }
+  .edu-head p{  font-size: larger;  }
 
   .edu-logo img {
     height: 2.5rem;
     width: 2.5rem;
   }
 
-  .edu-name h2 {
-    font-size: 1rem;
-  }
+  .edu-name h2 {  font-size: 1rem;  }
 
   .edu-name span,
   .edu-desc {
@@ -809,13 +831,13 @@ button{
   }
 }
 
-
 .event-cont{
     background-color: var(--primary-bg--);
     color: var(--primary-clr--);
     padding-bottom: 2rem;
     width: 100vw;
 }
+
 .event-head h1{
     background-color: blueviolet;
     width: 100vw;
@@ -959,7 +981,6 @@ button{
     font-size: 1rem;
   }
 }
-
 @media (max-width: 480px) {
   .footer-cont h1 {
     font-size: 1.3rem;
@@ -969,18 +990,12 @@ button{
     font-size: 1rem;
   }
 }
-
 .box {
   opacity: 0;
   transform: translateY(30px);
   transition: all 0.6s ease-out;
 }
-
 .box.show {
   opacity: 1;
   transform: translateY(0);
-}
-
-.hidden {
-  /* Optional: just for semantic clarity */
 }
