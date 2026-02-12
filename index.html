@@ -1,369 +1,623 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ayush Jha</title>
-    <link rel="stylesheet" href="port.css">
-    <link rel="icon" href="/assets/ayush.jpg" type="image/x-icon">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.waves.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        space: {
+                            black: '#030712', // Very dark gray/black
+                            card: '#111827', // Gray 900
+                            border: '#1f2937', // Gray 800
+                            accent: '#8b5cf6', // Violet 500
+                            glow: '#a78bfa', // Violet 400
+                        }
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #030712;
+            color: #f3f4f6;
+            overflow-x: hidden;
+        }
+
+        /* Particles Canvas */
+        #particle-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        /* Glassmorphism */
+        .glass {
+            background: rgba(17, 24, 39, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        
+        .glass-hover:hover {
+            border-color: rgba(139, 92, 246, 0.5);
+            box-shadow: 0 0 30px -5px rgba(139, 92, 246, 0.15);
+        }
+
+        /* Text Gradient */
+        .text-gradient {
+            background: linear-gradient(to right, #c084fc, #6366f1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #030712; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #374151; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #4b5563; 
+        }
+    </style>
 </head>
-<body class="dark-theme">
-    <div class="container" id="about">
-        <header class="head">
-            <div class="my-logo">
-                <button class="theme"><img id="theme-icon" src="assets/moon.png"></button>
-            </div>
-            <nav class="nav">
-            <a class="nav-link" href="#about">About</a>
-            <a class="nav-link" href="#skills">Skills</a>
-            <a class="nav-link" href="#project">Projects</a>
-            <a class="nav-link" href="#education">Education</a>
-            <a class="nav-link" href="#events">Events</a>
-            <a class="nav-link github2" href="https://github.com/AyushJha2008">Github</a>
-            </nav>
-            <a id="github" href="https://github.com/AyushJha2008"> <img src="assets/github.png" alt="">Github</a>
-            <a class="menu"><svg xmlns="http://www.w3.org/2000/svg" height="29px" viewBox="0 -960 960 960" width="29px" fill="#e3e3e3"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg></a>               
-        </header>
+<body class="antialiased selection:bg-violet-500/30 selection:text-violet-200">
 
-        <div class="about">
-            <div class="myself" >                
-                <h1>&lt;Hello/&gt;</h1>
-                <h1 class="myself-h1">Myself <br> Ayush Jha</h1>
-                <div class="role">
-                    <div class="role-in">A</div>
-                    <div id="typing" class="typing-container"></div>
-                </div>
-                <p>Bitten by a radioactive bug, now I debug for a living. Just your friendly neighborhood developer—if your site’s guilty of unsatisfied customer, Better Call Me!</p>
-                <a href="https://drive.google.com/file/d/1p62X72ZM1LugRzKnzj8awVw0gQ-FmXOQ/view?usp=sharing">Check Resume</a>
-            </div>
-           <div class="my-img">
-            <img src="assets/ayush.jpg" alt="Ayush">
-           </div>
-        </div>
+    <canvas id="particle-canvas"></canvas>
 
-    </div>
-
-    <div class="skill-cont" id="skills">
-        <div class="skills">
-            <h1 class="skill-head">SKILLS</h1>
-            <p>Here are some of my skills, Which i have been workig for the past 6 months</p>
-            <div class="skill-secn box hidden">               
-                <div class="skill-box">
-                    <h1>TECH SKILLS</h1>
-                    <div class="skill-grid box hidden">
-                        <div class="skill-item box hidden"><img src="assets/html.png"><span>HTML</span></div>
-                        <div class="skill-item box hidden"><img src="assets/css.png"><span>CSS</span></div>
-                        <div class="skill-item box hidden"><img src="assets/javascript.png"><span>Javascript</span></div>
-                        <div class="skill-item box hidden"><img src="assets/react.png"><span>React</span></div>
-                        <div class="skill-item box hidden"><img src="assets/typescript.png"><span>Typescript</span></div>
-                        <div class="skill-item box hidden"><img src="assets/mongodb.png"><span>MongoDB</span></div>
-                        <div class="skill-item box hidden"><img src="assets/express.png"><span>Express</span></div>
-                        <div class="skill-item box hidden"><img src="assets/node.png"><span>Node</span></div>   
-                                                                
-                    </div>                                                                                                                 
-                </div>
-
-                <div class="skill-box">
-                    <h1>Tools</h1>
-                    <div class="skill-grid other-skill">
-                        <div class="skill-item box hidden"><img src="assets/git.png"><span>Git</span></div>
-                        <div class="skill-item box hidden"><img src="assets/github.png"><span>Github</span></div>
-                        <div class="skill-item box hidden"><img src="assets/api.png"><span>API</span></div>
-                        <div class="skill-item box hidden"><img src="assets/postman.png"><span>Postman</span></div>
-                    </div>                
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="project-cont" id="project">
-        <div class="project-head box hidden">
-            <h1>PROJECTS</h1>
-            <p>I have worked on a wide range of projects. Here are some of my projects.</p>
-        </div>
-        <div class="project-grid box hidden">
-
-            <div class="project-secn box hidden">
-                <div class="project-cancel"> <span>x</span></div>
-                <div class="output-secn"><img loading="lazy" src="./assets/output1.png" alt=""></div>
-                <div class="language">
-                    <span>HTML</span> <span>CSS</span> <span>Javascript</span>
-                </div>
-                <div class="project-name">
-                    <p>Rk Ppr Scr</p>
-                    <span>12 Feb 2025</span>
-                </div>
-                <div class="hide-project">
-                <div class="project-desc">
-                    Traditional Rock paper scissor game made with html, css, js. opponent is bot who makes decision randomly.
-                </div>
-                <div class="project-btns">
-                    <a href="https://ayush-game-hub.vercel.app/Stone-Paper-Scissors/sps.html" class="proj-detail">Demo</a>
-                    <a href="https://github.com/AyushJha2008/js-mini-project.git" class="proj-view">Code</a>
-                </div>
-                </div>
-            </div>
-
-            <div class="project-secn box hidden">
-                <div class="project-cancel"> <span>x</span></div>
-                <div class="output-secn"><img src="./assets/output2.png" loading="lazy" alt=""></div>
-                <div class="language">
-                    <span>HTML</span> <span>CSS</span> <span>Javascript</span>
-                </div>
-                <div class="project-name">
-                    <p>Tic Tac Toe</p>
-                    <span>18 Feb 2025</span>
-                </div>
-                <div class="hide-project">
-                <div class="project-desc">
-                    Traditional 2-player OX game, you can play with friend with visual appealing background theme.
-                </div>
-                <div class="project-btns">
-                    <a class="proj-detail" href="https://ayush-game-hub.vercel.app/tic-tac-toe/tictac.html">Demo</a>
-                    <a class="proj-view" href="https://github.com/AyushJha2008/js-mini-project.git">Code</a>
-                </div>
-                </div>
-            </div>
-
-            <div class="project-secn box hidden">
-                <div class="project-cancel"> <span>x</span></div>
-                <div class="output-secn"><img loading="lazy" src="./assets/output3.png" alt=""></div>
-                <div class="language">
-                    <span>HTML</span> <span>CSS</span> <span>Javascript</span>
-                </div>
-                <div class="project-name">
-                    <p>Memory</p>
-                    <span>25 Feb 2025</span>
-                </div>
-                <div class="hide-project">
-                <div class="project-desc">
-                    Level up your memory, find matching cards and finish game with lesser number of turns possible. 
-                </div>
-                <div class="project-btns">
-                    <a class="proj-detail" href="https://ayush-game-hub.vercel.app/memory%20game/memory.html" >Demo</a>
-                    <a class="proj-view" href="https://github.com/AyushJha2008/js-mini-project.git">Code</a>
-                </div>
-                </div>
-            </div>
-
-            <div class="project-secn box hidden">
-                <div class="project-cancel"> <span>x</span></div>
-                <div class="output-secn"><img loading="lazy" src="./assets/output4.png" alt=""></div>
-                <div class="language">
-                    <span>ReactJS</span> <span>CSS</span> <span>API</span>
-                </div>
-                <div class="project-name">
-                    <p>WebFlex</p>
-                    <span>03 May 2025</span>
-                </div>
-                <div class="hide-project">
-                <div class="project-desc">
-                    WebFlex! A customized Anime streaming Wep app with Login feature inspired by Netflix UI [only frontend]
-                </div>
-                <div class="project-btns">
-                    <a class="proj-detail" href="https://www.linkedin.com/posts/ayush-jha200805_webdevelopment-react-project-activity-7338477905661808640-GVHO?utm_source=share&utm_medium=member_desktop&rcm=ACoAAE5C7EEBC7hIW_VyXuFe50enkBYVkPeUzQ8" >Demo</a>
-                    <a class="proj-view" href="https://github.com/AyushJha2008/WebFlex__React.git" >Code</a>
-                </div>
-                </div>
-            </div>
-
-            <div class="project-secn box hidden">
-                <div class="project-cancel"> <span>x</span></div>
-                <div class="output-secn"><img loading="lazy" src="./assets/output5.png" alt=""></div>
-                <div class="language">
-                    <span>ReactJS</span> <span>CSS</span> <span>API</span>
-                </div>
-                <div class="project-name">
-                    <p>WeatherCast</p>
-                    <span>25 May 2025</span>
-                </div>
-                <div class="hide-project">
-                <div class="project-desc">
-                    forecast wep app made with help of React.JS and Weather API which have special button for tracking your area's weather 
-                </div>
-                <div class="project-btns">
-                    <a class="proj-detail">Demo</a>
-                    <a class="proj-view" href="https://github.com/AyushJha2008/WeatherCast__React.git">Code</a>
-                </div>
-                </div>
-            </div>
-
-            <div class="project-secn box hidden">
-                <div class="project-cancel"> <span>x</span></div>
-                <div class="output-secn"><img loading="lazy" src="./assets/output6.png" alt=""></div>
-                <div class="language">
-                    <span>ReactJS</span> <span>CSS</span> <span>API</span>
-                </div>
-                <div class="project-name">
-                    <p>ChatBot</p>
-                    <span>29 May 2025</span>
-                </div>
-                <div class="hide-project">
-                <div class="project-desc">
-                    Chat bot made with Gemini's API. which can be added in any modern website with little bit customization
-                </div>
-                <div class="project-btns">
-                    <a class="proj-detail">Demo</a>
-                    <a class="proj-view" href="https://github.com/AyushJha2008/ChatBot__React.git">Code</a>
-                </div>
-                </div>
-            </div>
-
-            <div class="project-secn box hidden">
-                <div class="project-cancel"> <span>x</span></div>
-                <div class="output-secn"><img loading="lazy" src="./assets/output7.png" alt=""></div>
-                <div class="language">
-                    <span>ReactJS</span> <span>CSS</span> <span>API</span>
-                </div>
-                <div class="project-name">
-                    <p>Product Viewer</p>
-                    <span>09 Juyl 2025</span>
-                </div>
-                <div class="hide-project">
-                <div class="project-desc">
-                    Frontend of E-commerce Website with login, product detail and home page made with Dummy JSON Product API
-                </div>
-                <div class="project-btns">
-                    <a class="proj-detail">Demo</a>
-                    <a class="proj-view" href="https://github.com/AyushJha2008/ProductViewer__React.git">Code</a>
-                </div>
-                </div>
-            </div>
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 transition-all duration-300 bg-space-black/80 backdrop-blur-md border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-6 h-16 flex justify-between items-center">
+            <a href="#" class="text-xl font-bold font-mono tracking-tight flex items-center gap-2">
+                <span class="text-violet-500">&lt;</span>
+                <span class="text-white">Ayush Jha</span>
+                <span class="text-violet-500">/&gt;</span>
+            </a>
             
-        </div>
-    </div>
+            <div class="hidden md:flex space-x-8 text-sm font-medium text-gray-400">
+                <a href="#about" class="hover:text-white transition-colors">About</a>
+                <a href="#stack" class="hover:text-white transition-colors">Skills</a>
+                <a href="#projects" class="hover:text-white transition-colors">Projects</a>
+                <a href="#hackathons" class="hover:text-white transition-colors">Hackathons</a>
+                <a href="#education" class="hover:text-white transition-colors">Education</a>
+            </div>
 
-    <div class="edu-cont" id="education">
-        <div class="edu-head box hidden">
-            <h1>EDUCATION</h1>
-            <p>My education has been a journey of self-discovery and growth. My educational details are as follows.</p>
+            <a href="#contact" class="px-4 py-2 bg-violet-600/10 border border-violet-500/50 text-violet-300 rounded hover:bg-violet-600 hover:text-white transition-all text-sm font-medium">
+                Hire Me
+            </a>
         </div>
-        <div class="edu-grid box hidden">
-            <div class="edu-sec box hidden">
-                <div class="edu-place">
-                    <div class="edu-logo">
-                        <img src="./assets/edu1.jpeg" alt="">
+    </nav>
+
+    <!-- Hero -->
+    <section id="about" class="min-h-screen flex items-center justify-center relative pt-16">
+        <!-- Decorative Gradients -->
+        <div class="absolute top-20 right-0 w-96 h-96 bg-violet-600/20 rounded-full blur-[128px] pointer-events-none"></div>
+        <div class="absolute bottom-0 left-0 w-96 h-96 bg-blue-600/10 rounded-full blur-[128px] pointer-events-none"></div>
+
+        <div class="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center relative z-10">
+            <div>
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-violet-300 text-xs font-mono mb-6">
+                    <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                    Open to Work
+                </div>
+                
+                <h1 class="text-5xl md:text-7xl font-bold leading-tight mb-6">
+                    FullStack & <br>
+                    <span class="text-gradient">SaaS Dev</span>
+                </h1>
+                
+                <p class="text-gray-400 text-lg mb-8 max-w-lg leading-relaxed">
+                    Bitten by a radioactive bug, now I debug for a living. Just your friendly neighborhood developer - if your site’s guilty of unsatisfied customer, Better Call Me!
+                </p>
+
+                <div class="flex gap-4">
+                    <a href="https://drive.google.com/file/d/1aXAS7ZBgTv5oo59pE-Ijio98vT4QMLJ_/view?usp=sharing" class="px-8 py-3 bg-violet-600 hover:bg-violet-700 text-white font-medium rounded-lg transition-all shadow-[0_0_20px_rgba(139,92,246,0.3)] hover:shadow-[0_0_30px_rgba(139,92,246,0.5)]">
+                        Check Resume
+                    </a>
+                    <a href="#projects" class="px-8 py-3 bg-transparent border border-gray-700 hover:border-gray-500 text-gray-300 hover:text-white font-medium rounded-lg transition-all">
+                        My Projects
+                    </a>
+                </div>
+            </div>
+
+            <!-- 3D Visual/Code Block -->
+            <div class="hidden md:block relative animate-float">
+                <img 
+                src="https://github-readme-streak-stats.herokuapp.com/?user=AyushJha2008&theme=tokyonight"
+                alt="GitHub streak"
+                class="w-[420px]"
+                />
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Stack Section -->
+    <section id="stack" class="py-20 relative">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold mb-12 text-center">Tech <span class="text-gradient">Arsenal</span></h2>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <!-- React -->
+                <div class="glass p-6 rounded-xl hover:bg-white/5 transition duration-300 group text-center border-t border-transparent hover:border-violet-500/50">
+                    <i class="devicon-react-original text-4xl text-gray-400 group-hover:text-cyan-400 mb-4 transition-colors"></i>
+                    <h3 class="font-bold text-lg">React</h3>
+                </div>
+                <!-- express -->
+                <div class="glass p-6 rounded-xl hover:bg-white/5 transition duration-300 group text-center border-t border-transparent hover:border-violet-500/50">
+                    <i class="devicon-express-original text-4xl text-gray-400 group-hover:text-yellow-400 mb-4 transition-colors"></i>
+                    <h3 class="font-bold text-lg">Express</h3>
+                </div>
+                <!-- node -->
+                <div class="glass p-6 rounded-xl hover:bg-white/5 transition duration-300 group text-center border-t border-transparent hover:border-violet-500/50">
+                    <i class="devicon-nodejs-plain text-4xl text-gray-400 group-hover:text-green-500 mb-4 transition-colors"></i>
+                    <h3 class="font-bold text-lg">Node</h3>
+                </div>
+                <!-- mongo -->
+                <div class="glass p-6 rounded-xl hover:bg-white/5 transition duration-300 group text-center border-t border-transparent hover:border-violet-500/50">
+                    <i class="devicon-mongodb-plain text-4xl text-gray-400 group-hover:text-green-900 mb-4 transition-colors"></i>
+                    <h3 class="font-bold text-lg">MongoDB</h3>
+                </div>
+                <!-- github -->
+                <div class="glass p-6 rounded-xl hover:bg-white/5 transition duration-300 group text-center border-t border-transparent hover:border-violet-500/50">
+                    <i class="devicon-github-original text-4xl text-gray-400 group-hover:text-red-600 mb-4 transition-colors"></i>
+                    <h3 class="font-bold text-lg">Git & GitHub</h3>
+                </div>
+                <!-- postman -->
+                <div class="glass p-6 rounded-xl hover:bg-white/5 transition duration-300 group text-center border-t border-transparent hover:border-violet-500/50">
+                    <i class="devicon-postman-plain text-4xl text-gray-400 group-hover:text-orange-400 mb-4 transition-colors"></i>
+                    <h3 class="font-bold text-lg">Postman</h3>
+                </div>
+                <!-- 6. FastAPI -->
+                <div class="glass p-6 rounded-xl hover:bg-white/5 transition duration-300 group text-center border-t border-transparent hover:border-violet-500/50">
+                    <i class="fas fa-gear text-4xl text-gray-400 group-hover:text-teal-400 mb-4 transition-colors"></i>
+                    <h3 class="font-bold text-lg">RestAPI</h3>
+                </div>
+                <!-- 8. Tools -->
+                 <div class="glass p-6 rounded-xl hover:bg-white/5 transition duration-300 group text-center border-t border-transparent hover:border-violet-500/50">
+                    <i class="devicon-vercel-plain text-4xl text-gray-400 group-hover:text-green-400 mb-4 transition-colors"></i>
+                    <h3 class="font-bold text-lg">Deployment</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-space-black">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col justify-between items-center mb-12">
+                <div class="text-center">
+                    <h2 class="text-3xl font-bold">Featured <span class="text-gradient">Projects</span></h2>
+                    <p class="text-gray-400 mt-2">A selection of my recent projects which Iam working on.</p>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="glass glass-hover rounded-2xl overflow-hidden group transition-all duration-300">
+                    <div class="h-48 bg-gradient-to-br from-gray-800 to-gray-900 relative">
+                        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-violet-900/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-500"></div>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <!-- <i class=" group-hover:text-violet-400 transition duration-300"></i> -->
+                            <img src="./assets/output1.png" class="content-fit" alt="">
+                        </div>
                     </div>
-                    <div class="edu-clg">
-                        <div class="edu-name">
-                            <div><h2>Universal College Of Engineering, Kaman</h2></div>
-                            <div><span>Bachelor in Engineering - B.E. in Computer Science & Engineering</span></div>
-                            <p>Aug 2023 - July 2027</p>
+                    <div class="p-6">
+                        <div class="text-xs font-mono text-violet-400 mb-2">FullStack SaaS Product</div>
+                        <h3 class="text-xl font-bold mb-3 group-hover:text-violet-300 transition-colors">FeaturePulse</h3>
+                        <p class="text-gray-400 text-sm mb-4 leading-relaxed">
+                            Its GiHub App which tells intent vs implementation, Security analysis, summary by reading code on each pull request using webhooks. It have working subscription model via razorpay. We made this project as group in hackathon
+                        </p>
+                        <div class="pt-4 border-t border-white/5 flex items-center justify-between">
+                            <div class="flex flex-wrap gap-2">
+                                <span class="text-xs bg-white/5 px-2 py-1 rounded text-gray-300">Node</span>
+                                <span class="text-xs bg-white/5 px-2 py-1 rounded text-gray-300">Express</span>
+                                <span class="text-xs bg-white/5 px-2 py-1 rounded text-gray-300">React</span>
+                                <span class="text-xs bg-white/5 px-2 py-1 rounded text-gray-300">GitHub App</span>
+
+                            </div>
+                            <a href="https://github.com/ADFoundryLabs/FeaturePulse.git" class="text-gray-400 hover:text-white transition-colors transform hover:scale-110" title="View Code">
+                                <i class="fab fa-github text-xl"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
-                <div class="edu-marks">ongoing</div>
-                <div class="edu-desc">I am currently pursuing a Bachelor's degree in Computer Science and Engineering at Universal College Of Engineering,Kaman. I have completed 5 semesters. I have taken courses in Data Structures, Algorithms, Object-Oriented Programming, Database Management Systems, Operating Systems, and Computer Networks, among others.</div>
-            </div>
 
-            <div class="edu-sec box hidden">
-                <div class="edu-place">
-                    <div class="edu-logo">
-                        <img src="./assets/edu2.jpeg" alt="">
+                <!-- Project 2 -->
+                <div class="glass glass-hover rounded-2xl overflow-hidden group transition-all duration-300">
+                    <div class="h-48 bg-gradient-to-br from-gray-800 to-gray-900 relative">
+                        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-blue-900/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-500"></div>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="fas fa-leaf text-4xl text-gray-600 group-hover:text-blue-400 transition duration-300"></i>
+                        </div>
                     </div>
-                    <div class="edu-clg">
-                        <div class="edu-name">
-                            <div><h2>B.N.N College of Arts,Commerce and Science, Thane</h2></div>
-                            <div><span>HSC(XII), Science(PCMB)</span></div>
-                            <p>Apr 2021 - Apr 2023</p>
+                    <div class="p-6">
+                        <div class="text-xs font-mono text-blue-400 mb-2">FullStack Builing Navigation</div>
+                        <h3 class="text-xl font-bold mb-3 group-hover:text-blue-300 transition-colors">Map Me</h3>
+                        <p class="text-gray-400 text-sm mb-4 leading-relaxed">
+                            A QR-based indoor navigation web application with admin panel to generate building layouts with floors, rooms, unique QR codes, room images, and special notes. Enabled visitors to scan QR codes and view their current location and info about rooms.
+                        </p>
+                        <div class="pt-4 border-t border-white/5 flex items-center justify-between">
+                            <div class="flex flex-wrap gap-2">
+                                <span class="text-xs bg-white/5 px-2 py-1 rounded text-gray-300">React</span>
+                                <span class="text-xs bg-white/5 px-2 py-1 rounded text-gray-300">Node</span>
+                                <span class="text-xs bg-white/5 px-2 py-1 rounded text-gray-300">Express</span>
+                                <span class="text-xs bg-white/5 px-2 py-1 rounded text-gray-300">MongoDBL</span>
+
+
+                            </div>
+                            <a href="https://github.com/AyushJha2008/Map-Me.git" class="text-gray-400 hover:text-white transition-colors transform hover:scale-110" title="View Code">
+                                <i class="fab fa-github text-xl"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
-                <div class="edu-marks"><span><b>MHT-CET:</b> 80%tile</span> <span><b>JEE:</b> 72%tile</span></div>
-                <div class="edu-desc">I completed my HSC education at B.N.N college of Arts,Commerce and Science, Thane</div>
-            </div>
 
-            <div class="edu-sec box hidden">
-                <div class="edu-place">
-                    <div class="edu-logo">
-                        <img src="./assets/edu3.jpeg" alt="">
+                <!-- Project 3 -->
+                <div class="glass glass-hover rounded-2xl overflow-hidden group transition-all duration-300">
+                    <div class="h-48 bg-gradient-to-br from-gray-800 to-gray-900 relative">
+                        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-green-900/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-500"></div>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <img src="./assets/output2.png" alt="">
+                        </div>
                     </div>
-                    <div class="edu-clg">
-                        <div class="edu-name">
-                            <div><h2>Sister Nivedita English Medium High School, Thane</h2></div>
-                            <div><span>SSC(X)</span></div>
-                            <p>Apr 2020 - July 2021</p>
+                    <div class="p-6">
+                        <div class="text-xs font-mono text-green-400 mb-2">FullStack SmartCity Dashboard</div>
+                        <h3 class="text-xl font-bold mb-3 group-hover:text-green-300 transition-colors">City Centre</h3>
+                        <p class="text-gray-400 text-sm mb-4 leading-relaxed">
+                            Dashboard for Smart Cities which contains information about past, current, upcoming - Weather Cast, API index, Traffic Status and any latest Mishaps occurence (like road jams, accidents, etc.) for public safety purpose
+                        </p>
+                        <div class="pt-4 border-t border-white/5 flex items-center justify-between">
+                            <div class="flex flex-wrap gap-2">
+                                <span class="text-xs bg-white/5 px-2 py-1 rounded text-gray-300">HTML</span>
+                                <span class="text-xs bg-white/5 px-2 py-1 rounded text-gray-300">CSS</span>
+                                <span class="text-xs bg-white/5 px-2 py-1 rounded text-gray-300">Node</span>
+                                <span class="text-xs bg-white/5 px-2 py-1 rounded text-gray-300">Express</span>
+                            </div>
+                            <a href="https://github.com/AyushJha2008/CityCentre.git" class="text-gray-400 hover:text-white transition-colors transform hover:scale-110" title="View Code">
+                                <i class="fab fa-github text-xl"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
-                <div class="edu-marks">Grade: 74.8%</div>
-                <div class="edu-desc">I completed my class 10 education at Sister Nivedita English Medium High School, Thane.</div>
-            </div>           
-        </div>
-    </div>
-
-    <div class="event-cont" id="events">
-        <div class="event-head box hidden">
-            <h1>EVENTS</h1>
-            <p>Showcasing memorable tech events I participated this year</p>
-        </div>
-        <div class="event-grid box hidden">
-            <div class="event-slide slide1">
-                <img src="assets/event3.jpg" loading="lazy" alt="Coherence hackathon id-card">
-                <img src="assets/event1.jpg" loading="lazy" alt="Flutter workshop">
-                <img src="assets/event5.jpg" loading="lazy" alt="Coherence Hackathon team card">
-                <img src="assets/event2.jpg" loading="lazy" alt="Flutter workshop certificate">
-                <img src="assets/event4.jpg" loading="lazy" alt="Coherence hackathon team">
-                <img src="assets/event7.jpg" loading="lazy" alt="coherence hackathon myID">
-                <img src="assets/event8.jpg" loading="lazy" alt="Eonverse hackathon certificate">
-                <img src="assets/event6.jpg" loading="lazy" alt="coherence hackathon certificate">
-                <!-- duplicate -->
-                <img src="assets/event3.jpg" loading="lazy" alt="Coherence hackathon id-card">
-                <img src="assets/event1.jpg" loading="lazy" alt="Flutter workshop">
-                <img src="assets/event5.jpg" loading="lazy" alt="Coherence Hackathon team card">
-                <img src="assets/event2.jpg" loading="lazy" alt="Flutter workshop certificate">
-                <img src="assets/event4.jpg" loading="lazy" alt="Coherence hackathon team">
-                <img src="assets/event7.jpg" loading="lazy" alt="coherence hackathon myID">
-                <img src="assets/event8.jpg" loading="lazy" alt="Eonverse hackathon certificate">
-                <img src="assets/event6.jpg" loading="lazy" alt="coherence hackathon certificate">
-            </div>
-            <div class="event-slide slide2">
-                <img src="assets/event6.jpg" loading="lazy" alt="coherence hackathon certificate">
-                <img src="assets/event8.jpg" loading="lazy" alt="Eonverse hackathon certificate">
-                <img src="assets/event7.jpg" loading="lazy" alt="coherence hackathon myID">
-                <img src="assets/event4.jpg" loading="lazy" alt="Coherence hackathon team">
-                <img src="assets/event2.jpg" loading="lazy" alt="Flutter workshop certificate">
-                <img src="assets/event5.jpg" loading="lazy" alt="Coherence Hackathon team card">
-                <img src="assets/event1.jpg" loading="lazy" alt="Flutter workshop">
-                <img src="assets/event3.jpg" loading="lazy" alt="Coherence hackathon id-card">
-                <!-- duplicate -->
-                <img src="assets/event6.jpg" loading="lazy" alt="coherence hackathon certificate">
-                <img src="assets/event8.jpg" loading="lazy" alt="Eonverse hackathon certificate">
-                <img src="assets/event7.jpg" loading="lazy" alt="coherence hackathon myID">
-                <img src="assets/event4.jpg" loading="lazy" alt="Coherence hackathon team">
-                <img src="assets/event2.jpg" loading="lazy" alt="Flutter workshop certificate">
-                <img src="assets/event5.jpg" loading="lazy" alt="Coherence Hackathon team card">
-                <img src="assets/event1.jpg" loading="lazy" alt="Flutter workshop">
-                <img src="assets/event3.jpg" loading="lazy" alt="Coherence hackathon id-card">
             </div>
         </div>
+    </section>
+
+
+    <!-- Hackathons Section -->
+    <section id="hackathons" class="py-20 relative overflow-hidden">
+        <div class="absolute top-1/2 left-0 w-64 h-64 bg-violet-600/10 rounded-full blur-[100px] pointer-events-none"></div>
+
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold mb-12 text-center">My <span class="text-gradient">Achievements</span></h2>
+            
+            <div class="space-y-6 max-w-4xl mx-auto">
+                <!-- KnowCode 1 -->
+                <a href="https://www.linkedin.com/posts/ayush-jha200805_knowcode3-hackathonexperience-hackathon-activity-7423394402523447297-exv1?utm_source=share&utm_medium=member_desktop&rcm=ACoAAE5C7EEBC7hIW_VyXuFe50enkBYVkPeUzQ8">
+                <div class="glass glass-hover p-6 rounded-2xl transition-all duration-300">
+                    <div class="flex flex-col md:flex-row gap-8 items-center">
+                        <!-- Winning Picture Section -->
+                        <div class="w-full md:w-5/12 relative group overflow-hidden rounded-xl flex-shrink-0">
+                             <div class="aspect-video bg-gray-800 relative overflow-hidden">
+                                <!-- Placeholder Image for Winning Moment -->
+                                   <img src="./assets/event1.png" alt="Hackathon Team" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end p-4">
+                                     <span class="text-xs font-mono text-yellow-300 flex items-center gap-2">
+                                        <i class="fas fa-camera"></i> Finals
+                                     </span>
+                                </div>
+                             </div>
+                        </div>
+
+                        <!-- Content -->
+                        <div class="flex-grow text-center md:text-left">
+                             <div class="flex flex-col md:flex-row md:items-center gap-3 mb-4 justify-center md:justify-start">
+                                <div class="w-10 h-10 rounded-full bg-yellow-500/10 flex items-center justify-center border border-yellow-500/30 flex-shrink-0">
+                                    <i class="devicon-linkedin-plain text-yellow-400 text-sm"></i>
+                                </div>
+                                <h3 class="text-xl font-bold text-white">7th position - KnowCode 3.0 <br> K.J. Somaiya College</h3>
+                                <span class="text-xs bg-yellow-500/20 text-yellow-300 px-2 py-0.5 rounded border border-yellow-500/30">26 Jan 2026</span>
+                            </div>
+                            <p class="text-gray-400 text-sm mb-5 leading-relaxed">
+                                36-Hour SaaS Hackathon from 24 Jan - 26 Jan (2026) at K.J. Somaiya Insitute of Technology, My team Pirate-Kings built FeaturePulse Github APP which get us on 7th rank out of 300 teams 
+                            </p>
+                            <div class="flex flex-wrap gap-2 justify-center md:justify-start">
+                                <span class="text-xs text-gray-400 font-mono bg-white/5 px-2 py-1 rounded border border-white/5">#Hackathon</span>
+                            </div>
+                        </div>
+                    </div>
+                </div> </a>
+
+                <!-- SIH 2025 -->
+                <div class="glass glass-hover p-6 rounded-2xl transition-all duration-300">
+                    <div class="flex flex-col md:flex-row gap-8 items-center">
+                        <!-- Winning Picture Section -->
+                        <div class="w-full md:w-5/12 relative group overflow-hidden rounded-xl flex-shrink-0">
+                             <div class="aspect-video bg-gray-800 relative overflow-hidden">
+                                <!-- Placeholder Image for Winning Moment -->
+                                   <img src="./assets/event3.png" alt="Hackathon Team" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end p-4">
+                                     <span class="text-xs font-mono text-yellow-300 flex items-center gap-2">
+                                        <i class="fas fa-camera"></i> Nomination
+                                     </span>
+                                </div>
+                             </div>
+                        </div>
+
+                        <!-- Content -->
+                        <div class="flex-grow text-center md:text-left">
+                             <div class="flex flex-col md:flex-row md:items-center gap-3 mb-4 justify-center md:justify-start">
+                                <div class="w-10 h-10 rounded-full bg-yellow-500/10 flex items-center justify-center border border-yellow-500/30 flex-shrink-0">
+                                    <i class="fas fa-gear text-yellow-400 text-sm"></i>
+                                </div>
+                                <h3 class="text-xl font-bold text-white">Nominated for SIH 2025 <br> Internal Round</h3>
+                                <span class="text-xs bg-yellow-500/20 text-yellow-300 px-2 py-0.5 rounded border border-yellow-500/30">14 Sept 2025</span>
+                            </div>
+                            <p class="text-gray-400 text-sm mb-5 leading-relaxed">
+                                I led a team of 5 members in Smart India Hackathon 2025, college nominated our project idea in internal round unfortunately didn't get qualified for final round.  
+                            </p>
+                            <div class="flex flex-wrap gap-2 justify-center md:justify-start">
+                                <span class="text-xs text-gray-400 font-mono bg-white/5 px-2 py-1 rounded border border-white/5">#Hackathon</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                 <!-- campus ambassador -->
+                  <a href="https://www.linkedin.com/posts/ayush-jha200805_googlegemini-studentambassador-ai-ugcPost-7368564512800538624-ESYl?utm_source=share&utm_medium=member_desktop&rcm=ACoAAE5C7EEBC7hIW_VyXuFe50enkBYVkPeUzQ8">
+                <div class="glass glass-hover p-6 rounded-2xl transition-all duration-300">
+                    <div class="flex flex-col md:flex-row gap-8 items-center">
+                        <div class="w-full md:w-5/12 relative group overflow-hidden rounded-xl flex-shrink-0">
+                             <div class="aspect-video bg-gray-800 relative overflow-hidden">
+                                   <img src="./assets/event2.png" alt="Hackathon Team" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end p-4">
+                                     <span class="text-xs font-mono text-yellow-300 flex items-center gap-2">
+                                        <i class="fas fa-camera"></i> Ambassador
+                                     </span>
+                                </div>
+                             </div>
+                        </div>
+
+                        <!-- Content -->
+                        <div class="flex-grow text-center md:text-left">
+                             <div class="flex flex-col md:flex-row md:items-center gap-3 mb-4 justify-center md:justify-start">
+                                <div class="w-10 h-10 rounded-full bg-yellow-500/10 flex items-center justify-center border border-yellow-500/30 flex-shrink-0">
+                                    <i class="devicon-linkedin-plain text-yellow-400 text-sm"></i>
+                                </div>
+                                <h3 class="text-xl font-bold text-white">Campus Ambassador for <br> Google Gemini</h3>
+                                <span class="text-xs bg-yellow-500/20 text-yellow-300 px-2 py-0.5 rounded border border-yellow-500/30">18 Aug 2025</span>
+                            </div>
+                            <p class="text-gray-400 text-sm mb-5 leading-relaxed">
+                                I got selected as Campus ambassador for google gemini in which I conducted webinars and workshops on AI usage, Prompt Engineering, Concept to Code which help me to polish my social and leadership skills  
+                            </p>
+                            <div class="flex flex-wrap gap-2 justify-center md:justify-start">
+                                <span class="text-xs text-gray-400 font-mono bg-white/5 px-2 py-1 rounded border border-white/5">#GoogleGemini</span>
+                            </div>
+                        </div>
+                    </div>
+                </div> </a>
+            </div>
+        </div>
+    </section>
+
+<!-- Education Section -->
+<section id="education" class="py-20 relative overflow-hidden">
+  <div class="max-w-5xl mx-auto px-6">
+
+    <!-- Heading -->
+    <h2 class="text-3xl font-bold mb-12 text-center">My <span class="text-gradient">Education</span></h2>
+
+    <!-- Card 1 - Engineering -->
+    <div class="mb-8">
+      <div class="bg-gray-900 rounded-2xl p-6 md:p-8 hover:cyan-400/60 transition">
+        <div class="flex flex-col md:flex-row md:items-start gap-4">
+
+          <img src="./assets/edu1.jpeg" alt="college" class="w-14 h-14 rounded-lg bg-white p-1 object-contain">
+
+          <!-- Content -->
+          <div>
+            <h3 class="text-xl font-bold text-whote">
+              Universal College Of Engineering, Vasai
+            </h3>
+
+            <p class="text-gray-300 mt-1">
+              Bachelor in Engineering - B.E. in Computer Science & Engineering
+            </p>
+
+            <p class="text-sm text-gray-400 mt-1">
+              Aug 2023 - July 2027
+            </p>
+
+            <p class="text-cyan-400 text-sm mt-2">Ongoing</p>
+
+            <p class="mt-4 text-gray-300 leading-relaxed">
+              I am currently pursuing a Bachelor's degree in Computer Science and Engineering.
+              Completed 5 semesters with coursework in Data Structures & Algorithms,
+              OOPs, DBMS, Operating Systems, and Computer Networks.
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <!-- <div class="exp-cont">
-        <div class="exp-head">
-            <h1>Experience</h1>
-            <p>Here's a my journey of learning and growing with my past Associates as i intern or freelancer</p>
-        </div>
-        <div class="exp-grid">
+    <!-- Card 2 - HSC -->
+    <div>
+      <div class="bg-gray-900 rounded-2xl p-6 md:p-8  transition">
 
-        </div>
-    </div> -->
+        <div class="flex flex-col md:flex-row md:items-start gap-4">
 
-    <footer class="footer-cont">
-        <h1>Connect with me</h1>
-        <div class="footer-links">
-            <a href="http://www.linkedin.com/in/ayush-jha200805">Linkedin</a>
-            <a href="https://github.com/AyushJha2008/AyushJha2008.git">Github</a>
-            <a href="mailto:ayushjha@gmail.com">Gmail</a>
-            <a href="https://wa.me/+917517223343" target="_blank">Whatsapp</a>
-        </div>
-        <div class="footer-secn">
-            <span>© 2025 Ayush Jha. All rights reserved.</span>
-        </div>
-    </footer>
+          <!-- Logo -->
+          <img src="./assets/edu2.jpeg" alt="college"
+               class="w-14 h-14 rounded-lg bg-white p-1 object-contain">
 
-    <script src="port.js"></script>
+          <!-- Content -->
+          <div>
+            <h3 class="text-xl md:text-2xl font-semibold">
+              B.N.N College of Arts, Commerce and Science, Bhiwandi
+            </h3>
+
+            <p class="text-gray-300 mt-1">
+              HSC (XII), Science (PCMB)
+            </p>
+
+            <p class="text-sm text-gray-400 mt-1">
+              Apr 2021 - Apr 2023
+            </p>
+
+            <p class="mt-3 text-gray-300">
+              <span class="font-medium">MHT-CET:</span> 80%ile &nbsp;&nbsp;
+              <span class="font-medium">JEE:</span> 72%ile
+            </p>
+
+            <p class="mt-4 text-gray-300 leading-relaxed">
+              Completed Higher Secondary education with Science stream,
+              building a strong foundation in Mathematics and Physics.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+
+    <!-- Contact -->
+    <section id="contact" class="py-20">
+        <div class="container mx-auto px-6 max-w-4xl">
+            <div class="glass rounded-2xl p-10 text-center border border-violet-500/20 shadow-[0_0_50px_rgba(139,92,246,0.1)]">
+                <h2 class="text-3xl font-bold mb-6">Ready to <span class="text-violet-400">Collaborate?</span></h2>
+                <p class="text-gray-400 mb-8 max-w-xl mx-auto">
+                    I'm actively looking for internships opportunities.
+                </p>
+                <a href="mailto:ayushsjha2008@gmail.com" class="inline-flex items-center gap-2 px-8 py-4 bg-white text-black font-bold rounded-lg hover:bg-violet-400 hover:scale-105 transition-all duration-300">
+                    <i class="fas fa-paper-plane"></i> Send Email
+                </a>
+
+                <div class="mt-12 flex justify-center gap-8 text-2xl text-gray-500">
+                    <a href="https://github.com/AyushJha2008" class="hover:text-white transition-colors transform hover:-translate-y-1"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/ayush-jha200805/" class="hover:text-blue-400 transition-colors transform hover:-translate-y-1"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+            <div class="text-center mt-12 text-sm text-gray-600">
+                &copy; 2025 Ayush Jha. 
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Particle Network Animation
+        const canvas = document.getElementById('particle-canvas');
+        const ctx = canvas.getContext('2d');
+        
+        let width, height;
+        let particles = [];
+        const particleCount = 50;
+        const connectionDistance = 150;
+
+        function resize() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resize);
+        resize();
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * width;
+                this.y = Math.random() * height;
+                this.vx = (Math.random() - 0.5) * 0.5;
+                this.vy = (Math.random() - 0.5) * 0.5;
+                this.size = Math.random() * 2 + 1;
+            }
+
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+
+                if (this.x < 0 || this.x > width) this.vx *= -1;
+                if (this.y < 0 || this.y > height) this.vy *= -1;
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = 'rgba(139, 92, 246, 0.5)'; // Violet
+                ctx.fill();
+            }
+        }
+
+        function init() {
+            particles = [];
+            for (let i = 0; i < particleCount; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, width, height);
+            
+            particles.forEach((p, index) => {
+                p.update();
+                p.draw();
+
+                // Draw Connections
+                for (let j = index + 1; j < particles.length; j++) {
+                    const p2 = particles[j];
+                    const dx = p.x - p2.x;
+                    const dy = p.y - p2.y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distance < connectionDistance) {
+                        ctx.beginPath();
+                        ctx.moveTo(p.x, p.y);
+                        ctx.lineTo(p2.x, p2.y);
+                        ctx.strokeStyle = `rgba(139, 92, 246, ${0.15 * (1 - distance / connectionDistance)})`;
+                        ctx.lineWidth = 1;
+                        ctx.stroke();
+                    }
+                }
+            });
+            
+            requestAnimationFrame(animate);
+        }
+
+        init();
+        animate();
+    </script>
 </body>
 </html>
