@@ -9,7 +9,7 @@ import Skills from "./components/Skills";
 function App() {
   return (
     // bg-[#030712]
-    <div className="relative min-h-screen text-white bg-[#030712]">
+    <div className="w-full overflow-x-hidden min-h-screen text-white bg-[#030712]">
       <Navbar/>
       <Hero/>
       <Skills/>

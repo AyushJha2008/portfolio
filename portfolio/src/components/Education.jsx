@@ -1,4 +1,7 @@
 import React from "react";
+import edu1 from "../assets/edu1.jpeg";
+import edu2 from "../assets/edu2.jpeg";
+import edu3 from "../assets/edu3.jpg";
 
 const Education = () => {
   return (
@@ -14,7 +17,7 @@ const Education = () => {
             <div className="glass glass-hover rounded-2xl p-6 md:p-8 hover:cyan-400/60 transition">
               <div className="flex flex-col md:flex-row md:items-start gap-4">
                 <img
-                  src="../src/assets/edu1.jpeg"
+                  src={edu1}
                   alt="college"
                   className="w-14 h-14 rounded-lg bg-white p-1 object-contain"
                 />
@@ -52,7 +55,7 @@ const Education = () => {
               <div className="flex flex-col md:flex-row md:items-start gap-4">
                 {/* <!-- Logo --> */}
                 <img
-                  src="../src/assets/edu2.jpeg"
+                  src={edu2}
                   alt="college"
                   className="w-14 h-14 rounded-lg bg-white p-1 object-contain"
                 />
@@ -87,7 +90,7 @@ const Education = () => {
             <div className="glass glass-hover rounded-2xl p-6 md:p-8 hover:cyan-400/60 transition">
               <div className="flex flex-col md:flex-row md:items-start gap-4">
                 <img
-                  src="../src/assets/edu3.jpg"
+                  src={edu3}
                   alt="college"
                   className="w-14 h-14 rounded-lg bg-white p-1 object-contain"
                 />

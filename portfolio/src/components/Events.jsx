@@ -93,16 +93,16 @@ const Events = () => {
                     ))} */}
 
             {[...events, ...events].map((event, index) => (
-              <div key={index} className="relative group w-80 h-52 flex-shrink-0 overflow-hidden rounded-2xl">
+              <div key={index} className="relative group w-56 h-36 md:w-80 md:h-52 flex-shrink-0 overflow-hidden rounded-xl md:rounded-2xl glass glass-hover">
                 <img src={event.image} alt="" className="w-full h-full object-cover"/>
                 {/* Hover Overlay */}
                 <div
                   className="absolute inset-0 bg-black/60
                  opacity-0 group-hover:opacity-100
                  transition-all duration-300
-                 flex items-center justify-center p-4"
+                 flex items-center justify-center p-3 md:p-4"
                 >
-                  <p className="text-white text-center font-medium">{event.info}</p>
+                  <p className="text-white text-center text-xs md:text-sm font-medium leading-snug">{event.info}</p>
                 </div>
               </div>
             ))}
