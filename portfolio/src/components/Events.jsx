@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import event1 from "../assets/event1.png";
 import event2 from "../assets/event2.png";
 import event3 from "../assets/event3.png";
@@ -13,101 +13,178 @@ import event11 from "../assets/event11.png";
 import event12 from "../assets/event12.png";
 import event13 from "../assets/event13.png";
 
-const events = [
+const eventsList = [
   {
     image: event1,
-    info: "36-Hour KnowCode 3.0 Hackathon at K.J. Somaiaya College",
+    title: "KnowCode 3.0",
+    type: "Hackathon",
+    info: "Collaborating at K.J. Somaiya College's 36-hour hackathon",
   },
   {
     image: event2,
-    info: "36-Hour KnowCode 3.0 Hackathon at K.J. Somaiaya College",
+    title: "KnowCode 3.0",
+    type: "Hackathon",
+    info: "Collaborating at K.J. Somaiya College's 36-hour hackathon",
   },
   {
     image: event3,
-    info: "Qualified for Finals,out of 300 teams we reached top 15",
+    title: "KnoCode 3.0",
+    type: "Hackathon",
+    info: "Qualified for Finals, placing in the top 15 out of 300+ competing teams",
   },
   {
     image: event4,
-    info: "24-Hour Agentic AI Hackathon MumbaiHacks at NESCO",
+    title: "MumbaiHacks",
+    type: "Hackathon",
+    info: "24-Hour Agentic AI Hackathon at NESCO Mumbai",
   },
   {
     image: event5,
-    info: "24-Hour Agentic AI Hackathon MumbaiHacks at NESCO",
-  },
-  {
-    image: event6,
-    info: "Tech Meetup - MongoDB MUG Meetup at BrowserStack Mumbai",
+    title: "MumbaiHacks",
+    type: "Hackathon",
+    info: "24-Hour Agentic AI Hackathon at NESCO Mumbai",
   },
   {
     image: event7,
-    info: "Tech Meetup - VS Code Dev days at Microsoft Mumbai",
+    title: "VS Code Dev Days",
+    type: "Meetup",
+    info: "Attending the Microsoft VS Code Dev Days event at Microsoft Mumbai",
   },
   {
     image: event8,
-    info: "Tech Meetup - VS Code Dev days at Microsoft Mumbai",
+    title: "VS Code dev Days",
+    type: "Meetup",
+    info: "Attending the Microsoft VS Code Dev Days event at Microsoft Mumbai",
   },
   {
     image: event9,
-    info: "Tech Meetup - MongoDB MUG Meetup at BrowserStack Mumbai",
+    title: "MongoDB MUG Meetup",
+    type: "Meetup",
+    info: "MongoDB MUG Meetup hosted at BrowserStack Mumbai office",
+  },
+  {
+    image: event6,
+    title: "MongoDB Meetup",
+    type: "Meetup",
+    info: "MongoDB MUG Meetup hosted at BrowserStack Mumbai office",
   },
   {
     image: event10,
-    info: "36-Hour Hackathon HackCelestial 2.0 at Pillai College of Engg, Navi Mumbai",
+    title: "HackCelestial 2.0",
+    type: "Hackathon",
+    info: "Competing in the 36-Hour Hackathon at Pillai College of Engineering",
   },
   {
     image: event11,
-    info: "My SIH team nominated for Semi Finals from our College",
+    title: "Smart India Hackathon",
+    type: "Hackathon",
+    info: "SIH project nominated for Semi-Finals from our college representation",
   },
   {
     image: event12,
-    info: "24-Hour Hackathon Coherence 2.0 at Vidyavardhini College of Engg, Vasai",
+    title: "Coherence 2.0",
+    type: "Hackathon",
+    info: "24-Hour hackathon at Vidyavardhini College of Engineering, Vasai",
   },
   {
     image: event13,
-    info: "24-Hour Hackathon Coherence 2.0 at Vidyavardhini College of Engg, Vasai",
+    title: "Coherence 2.0",
+    type: "Hackathon",
+    info: "Final sprints and presenting our MERN stack build to the jury",
   },
 ];
 
 const Events = () => {
+  const [activeTab, setActiveTab] = useState("All");
+  const [showAll, setShowAll] = useState(false);
+
+  const filteredEvents = activeTab === "All"
+    ? eventsList
+    : eventsList.filter(event => event.type === activeTab);
+
+  const visibleEvents = showAll ? filteredEvents : filteredEvents.slice(0, 6);
+
   return (
-    <section id="hackathons" className="py-20 relative">
-      <div className="container mx-auto px-6">
+    <section id="hackathons" className="py-20 relative overflow-hidden">
+      {/* Glow effect */}
+      <div className="absolute top-1/2 left-0 w-[400px] h-[400px] bg-violet-600/5 rounded-full blur-[140px] pointer-events-none"></div>
+
+      <div className="container mx-auto px-6 relative z-10">
         <div className="flex flex-col justify-between items-center mb-12">
           <div className="text-center">
             <h2 className="text-3xl font-bold">
               Tech <span className="text-gradient">Events</span>
             </h2>
             <p className="text-gray-400 mt-2">
-              Hackathons and Tech-Meetups I've attended which helped me to grow
+              Hackathons and Meetups I've attended to learn and grow
             </p>
           </div>
-        </div>
 
-        <div className="overflow-hidden w-full py-10">
-          <div className="flex w-max gap-6 animate-[scroll_30s_linear_infinite]  hover:[animation-play-state:paused]">
-            {/* {[...events, ...events].map((img, index) => (
-                        <img 
-                        key={index} src={img} 
-                        className="w-80 h-52 object-cover rounded-2xl flex-shrink-0"
-                        />
-                    ))} */}
-
-            {[...events, ...events].map((event, index) => (
-              <div key={index} className="relative group w-56 h-36 md:w-80 md:h-52 flex-shrink-0 overflow-hidden rounded-xl md:rounded-2xl glass glass-hover">
-                <img src={event.image} alt="" className="w-full h-full object-cover"/>
-                {/* Hover Overlay */}
-                <div
-                  className="absolute inset-0 bg-black/60
-                 opacity-0 group-hover:opacity-100
-                 transition-all duration-300
-                 flex items-center justify-center p-3 md:p-4"
-                >
-                  <p className="text-white text-center text-xs md:text-sm font-medium leading-snug">{event.info}</p>
-                </div>
-              </div>
+          {/* Filtering tabs */}
+          <div className="flex bg-white/5 border border-white/10 p-1.5 rounded-xl gap-2 mt-8">
+            {["All", "Hackathon", "Meetup"].map((type) => (
+              <button
+                key={type}
+                id={`events-filter-${type.toLowerCase()}`}
+                onClick={() => {
+                  setActiveTab(type);
+                  setShowAll(false);
+                }}
+                className={`px-5 py-2 rounded-lg text-sm font-semibold transition-all duration-300 ${
+                  activeTab === type
+                    ? "bg-violet-600 text-white shadow-lg shadow-violet-600/20"
+                    : "text-gray-400 hover:text-white hover:bg-white/5"
+                }`}
+              >
+                {type === "All" ? "All Events" : type + "s"}
+              </button>
             ))}
           </div>
         </div>
+
+        {/* Gallery Grid */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {visibleEvents.map((event, index) => (
+            <div 
+              key={index} 
+              className="relative group h-56 overflow-hidden rounded-2xl glass border border-white/5 shadow-lg hover:border-violet-500/30 transition-all duration-300"
+            >
+              <img 
+                src={event.image} 
+                alt={event.title} 
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+              
+              {/* Type Badge */}
+              <span className={`absolute top-4 left-4 z-20 text-xs px-2.5 py-1 rounded-md font-semibold ${
+                event.type === "Hackathon" 
+                  ? "bg-red-500/20 text-red-300 border border-red-500/30" 
+                  : "bg-blue-500/20 text-blue-300 border border-blue-500/30"
+              }`}>
+                {event.type}
+              </span>
+
+              {/* Hover overlay with detail content */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/20 opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col justify-end p-5">
+                <h3 className="text-white text-lg font-bold mb-1 tracking-wide">{event.title}</h3>
+                <p className="text-gray-300 text-xs md:text-sm leading-relaxed">{event.info}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Toggle Expand Button */}
+        {filteredEvents.length > 6 && (
+          <div className="flex justify-center mt-12">
+            <button
+              onClick={() => setShowAll(!showAll)}
+              id="btn-toggle-events-gallery"
+              className="px-6 py-2.5 bg-white/5 border border-white/10 hover:border-violet-500/40 text-gray-300 hover:text-white rounded-xl transition-all duration-300 font-semibold text-sm shadow-md hover:shadow-violet-600/10"
+            >
+              {showAll ? "Show Less" : `View All (${filteredEvents.length})`}
+            </button>
+          </div>
+        )}
       </div>
     </section>
   );
