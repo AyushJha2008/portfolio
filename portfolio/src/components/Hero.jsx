@@ -11,10 +11,10 @@ const Hero = () => {
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-600/10 rounded-full blur-[128px] pointer-events-none"></div>
 
         <div className="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center relative z-10">
-            <div>
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-violet-300 text-xs font-mono mb-6">
-                    <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
-                    Open to Work
+            <div className='mt-4'>
+                <div className="inline-flex items-center gap-2 px-3 py-1 text-violet-300 mb-4">
+                    <a href="https://github.com/AyushJha2008" className="hover:text-white transition-colors transform hover:-translate-y-1"><i className="fab fa-github text-2xl"></i></a>
+                    <a href="https://www.linkedin.com/in/ayush-jha200805/" className="hover:text-blue-400 transition-colors transform hover:-translate-y-1"><i className="fab fa-linkedin text-2xl"></i></a>
                 </div>
                 
                 <h1 className="text-5xl md:text-7xl font-bold leading-tight mb-6">

@@ -20,7 +20,7 @@ const Navbar = () => {
                 </div>
 
                 <a href="#contact" className="px-4 py-2 bg-violet-600/10 border border-violet-500/50 text-violet-300 rounded hover:bg-violet-600 hover:text-white transition-all text-sm font-medium">
-                    Hire Me
+                    Contact
                 </a>
             </div>
         </nav>

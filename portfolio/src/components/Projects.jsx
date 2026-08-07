@@ -5,7 +5,7 @@ import project2 from '../assets/project2.png' //mapme
 import project3 from '../assets/project3.png' //job wallah
 import project4 from '../assets/project4.png' //course scheduller 
 import project5 from '../assets/project5.png' //featurepulse
-
+import project6 from '../assets/project6.png' //tea n toast
 
 const Projects = () => {
   return (
@@ -19,6 +19,41 @@ const Projects = () => {
             </div>
 
             <div className="grid md:grid-cols-3 gap-8 items-stretch">
+
+                {/* <!-- Project 1 --> */}
+                <div className="glass glass-hover rounded-2xl overflow-hidden group transition-all duration-300">
+                    <div className="h-48 bg-gradient-to-br from-gray-800 to-gray-900 relative">
+                        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-violet-900/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-500"></div>
+                        <div className="absolute inset-0 flex items-center justify-center">
+                            <img src={project6} className="content-fit" alt="feature pulse img"/>
+                        </div>
+                    </div>
+                    <div className="p-6">
+                        <div className="text-xs font-mono text-violet-400 mb-2">FullStack SaaS Product</div>
+                        <h3 className="text-xl font-bold mb-3 group-hover:text-violet-300 transition-colors">Tea-n-Toast</h3>
+                        <p className="text-gray-400 text-sm leading-relaxed">
+                            Tea-N-Toast (TNT) is a real-time communication platform designed to offer instant messaging (WebSocket), media sharing (Cloudinary), and high-quality peer-to-peer voice and video calling (WebRTC). Implemented with JWT Authentication.
+                        </p>
+                        <div className="pt-4 border-t border-white/5 flex items-center justify-between">
+                            <div className="flex flex-wrap gap-2">
+                                <span className="text-xs bg-white/5 px-2 py-1 rounded text-gray-300">Node</span>
+                                <span className="text-xs bg-white/5 px-2 py-1 rounded text-gray-300">Express</span>
+                                <span className="text-xs bg-white/5 px-2 py-1 rounded text-gray-300">React</span>
+                                <span className="text-xs bg-white/5 px-2 py-1 rounded text-gray-300">MongoDB</span>
+                                <span className="text-xs bg-white/5 px-2 py-1 rounded text-gray-300">Socket.IO</span>
+                                <span className="text-xs bg-white/5 px-2 py-1 rounded text-gray-300">WebRTC</span>
+
+                            </div>
+                            <a href="https://github.com/AyushJha2008/Tea-N-Toast.git" className="text-gray-400 hover:text-white transition-colors transform hover:scale-110 mr-1" title="View Code">
+                                <i className="fab fa-github text-xl"></i>
+                            </a>
+                            <a href="https://tea-n-toast.vercel.app/" className="text-gray-400 hover:text-cyan transition-colors transform hover:scale-110" title="Live Site">
+                                <i className="fa-solid fa-globe text-xl"></i>
+                            </a>
+                            
+                        </div>
+                    </div>
+                </div>
 
                 {/* <!-- Project 1 --> */}
                 <div className="glass glass-hover rounded-2xl overflow-hidden group transition-all duration-300">
