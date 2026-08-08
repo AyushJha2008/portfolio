@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import myself from '../assets/myself1.png'
 
-const roles = ["SaaS Developer", "FullStack Developer", "Problem Solver", "C.E. Undergraduate"];
+const roles = ["SaaS Developer","Problem Solver", "C.E. Undergrad."];
 
 const Hero = () => {
   const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
@@ -47,7 +47,7 @@ const Hero = () => {
         <div className="absolute top-20 right-0 w-[450px] h-[450px] bg-violet-600/10 rounded-full blur-[140px] pointer-events-none"></div>
         <div className="absolute bottom-10 left-0 w-[450px] h-[450px] bg-blue-600/10 rounded-full blur-[140px] pointer-events-none"></div>
 
-        <div className="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center relative z-10">
+        <div className="container mx-auto px-4 sm:px-6 grid md:grid-cols-2 gap-12 items-center relative z-10">
           <div className='mt-4'>
             <div className="inline-flex items-center gap-4 px-4 py-1.5 bg-white/5 rounded-full border border-white/10 text-violet-300 mb-6 backdrop-blur-md">
               <span className="text-xs text-gray-400 font-medium">Connect:</span>
@@ -81,18 +81,18 @@ const Hero = () => {
               Bitten by a radioactive bug, now I debug for a living. Just your friendly neighborhood developer - if your site’s guilty of an unsatisfied customer, Better Call Me!
             </p>
 
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-col sm:flex-row gap-4">
               <a 
                 href="https://drive.google.com/file/d/1aXAS7ZBgTv5oo59pE-Ijio98vT4QMLJ_/view?usp=sharing" 
                 id="hero-btn-resume"
-                className="px-8 py-3.5 bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-500 hover:to-indigo-500 text-white font-medium rounded-xl transition-all shadow-[0_0_20px_rgba(139,92,246,0.3)] hover:shadow-[0_0_30px_rgba(139,92,246,0.6)] transform hover:-translate-y-0.5 text-center"
+                className="w-full sm:w-auto px-8 py-3.5 bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-500 hover:to-indigo-500 text-white font-medium rounded-xl transition-all shadow-[0_0_20px_rgba(139,92,246,0.3)] hover:shadow-[0_0_30px_rgba(139,92,246,0.6)] transform hover:-translate-y-0.5 text-center"
               >
                 Check Resume
               </a>
               <a 
                 href="https://github.com/AyushJha2008" 
                 id="hero-btn-github"
-                className="px-8 py-3.5 bg-white/5 border border-white/10 hover:border-violet-500/50 text-gray-300 hover:text-white hover:bg-white/10 font-medium rounded-xl transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-2 text-center"
+                className="w-full sm:w-auto px-8 py-3.5 bg-white/5 border border-white/10 hover:border-violet-500/50 text-gray-300 hover:text-white hover:bg-white/10 font-medium rounded-xl transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-2 text-center"
               >
                 <i className="fab fa-github"></i> My GitHub
               </a>
@@ -106,7 +106,7 @@ const Hero = () => {
             <div className="relative p-2.5 glass rounded-2xl border border-white/10 shadow-2xl">
               <img 
                 src={myself} 
-                className='object-cover rounded-xl shadow-inner max-h-[380px] md:max-h-[440px] w-auto' 
+                className='object-cover rounded-xl shadow-inner max-h-[300px] sm:max-h-[380px] md:max-h-[440px] w-full max-w-xs sm:max-w-none h-auto' 
                 alt="Ayush Jha Profile" 
               />
             </div>

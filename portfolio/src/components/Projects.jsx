@@ -20,7 +20,7 @@ const Projects = () => {
       subtitle: "Real-Time Communication Platform",
       description: "Tea-N-Toast (TNT) is a real-time communication platform designed to offer instant messaging (WebSocket), media sharing (Cloudinary), and high-quality peer-to-peer voice and video calling (WebRTC). Implemented with JWT Authentication.",
       image: project6,
-      tags: ["Node", "Express", "React", "MongoDB", "Socket.IO", "WebRTC"],
+      tags: ["Node", "Express", "React", "MongoDB", "WebSocket", "WebRTC"],
       github: "https://github.com/AyushJha2008/Tea-N-Toast.git",
       live: "https://tea-n-toast.vercel.app/",
       glowClass: "hover:shadow-[0_0_30px_rgba(139,92,246,0.15)] hover:border-violet-500/40",
@@ -33,7 +33,7 @@ const Projects = () => {
       subtitle: "AI-Powered Developer Tool",
       description: "Complete Deployed GitHub App which tells intent vs implementation, Security analysis, summary by reading code on each pull request using webhooks. It has a working subscription model via razorpay. We made this project as a group in a hackathon.",
       image: project5,
-      tags: ["Node", "Express", "React", "GitHub App", "Razorpay"],
+      tags: ["Node", "Express", "React", "GitHub App", "WebHooks", "Razorpay"],
       github: "https://github.com/ADFoundryLabs/FeaturePulse.git",
       live: "https://feature-pulse-five.vercel.app/",
       glowClass: "hover:shadow-[0_0_30px_rgba(167,139,250,0.15)] hover:border-violet-500/40",
@@ -99,7 +99,7 @@ const Projects = () => {
       {/* Background glowing blur */}
       <div className="absolute top-1/3 right-0 w-[400px] h-[400px] bg-blue-600/5 rounded-full blur-[140px] pointer-events-none"></div>
 
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 relative z-10">
         <div className="flex flex-col justify-between items-center mb-12">
           <div className="text-center">
             <h2 className="text-3xl font-bold">Featured <span className="text-gradient">Projects</span></h2>
@@ -145,7 +145,7 @@ const Projects = () => {
               </div>
 
               {/* Card Body */}
-              <div className="p-6 flex flex-col flex-grow">
+              <div className="p-5 sm:p-6 flex flex-col flex-grow">
                 <div className={`text-xs font-mono mb-2 ${project.accentColor} font-semibold uppercase tracking-wider`}>
                   {project.subtitle}
                 </div>

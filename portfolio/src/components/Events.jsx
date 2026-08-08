@@ -109,7 +109,7 @@ const Events = () => {
       {/* Glow effect */}
       <div className="absolute top-1/2 left-0 w-[400px] h-[400px] bg-violet-600/5 rounded-full blur-[140px] pointer-events-none"></div>
 
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 relative z-10">
         <div className="flex flex-col justify-between items-center mb-12">
           <div className="text-center">
             <h2 className="text-3xl font-bold">
@@ -136,7 +136,7 @@ const Events = () => {
                     : "text-gray-400 hover:text-white hover:bg-white/5"
                 }`}
               >
-                {type === "All" ? "All Events" : type + "s"}
+                {type === "All" ? "All" : type + "s"}
               </button>
             ))}
           </div>
@@ -165,7 +165,7 @@ const Events = () => {
               </span>
 
               {/* Hover overlay with detail content */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/20 opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col justify-end p-5">
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/20 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-all duration-300 flex flex-col justify-end p-5">
                 <h3 className="text-white text-lg font-bold mb-1 tracking-wide">{event.title}</h3>
                 <p className="text-gray-300 text-xs md:text-sm leading-relaxed">{event.info}</p>
               </div>

@@ -34,8 +34,8 @@ const Contact = () => {
       {/* Background glow shadow */}
       <div className="absolute bottom-0 right-1/4 w-[450px] h-[450px] bg-violet-600/5 rounded-full blur-[140px] pointer-events-none"></div>
 
-      <div className="container mx-auto px-6 max-w-5xl relative z-10">
-        <div className="glass rounded-3xl p-8 md:p-12 border border-white/10 shadow-[0_0_50px_rgba(139,92,246,0.05)]">
+      <div className="container mx-auto px-4 sm:px-6 max-w-5xl relative z-10">
+        <div className="glass rounded-3xl p-5 sm:p-8 md:p-12 border border-white/10 shadow-[0_0_50px_rgba(139,92,246,0.05)]">
           <div className="grid md:grid-cols-2 gap-12 items-start">
             
             {/* Left Column: Info */}
@@ -106,7 +106,7 @@ const Contact = () => {
             </div>
 
             {/* Right Column: Form */}
-            <div className="bg-white/[0.02] border border-white/5 p-6 md:p-8 rounded-2xl">
+            <div className="bg-white/[0.02] border border-white/5 p-4 sm:p-6 md:p-8 rounded-2xl">
               <form onSubmit={handleSubmit} className="space-y-5 text-left">
                 {errorMsg && (
                   <div className="text-red-400 text-xs bg-red-500/10 border border-red-500/20 p-3 rounded-lg">

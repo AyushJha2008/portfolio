@@ -18,7 +18,7 @@ const Navbar = () => {
       <nav 
         className="fixed w-full z-50 transition-all duration-300 bg-transparent backdrop-blur-md"
       > 
-        <div className="max-w-7xl mx-auto px-6 h-12 md:h-16 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 h-12 md:h-16 flex items-center justify-between">
           <a href="#" className="text-xl font-bold font-mono tracking-tight flex items-center gap-1 md:gap-2 group" id="nav-brand">
             <span className="text-violet-500 group-hover:translate-x--1 transition-transform">&lt;</span>
             <span className="text-white">Ayush Jha</span>
@@ -80,7 +80,7 @@ const Navbar = () => {
         <div 
           className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
             isOpen ? "max-h-80 opacity-100 py-4 border-b border-white/10" : "max-h-0 opacity-0 py-0 pointer-events-none"
-          } bg-[#030712]/95 backdrop-blur-lg px-6 space-y-4`}
+          } bg-[#030712]/95 backdrop-blur-lg px-4 sm:px-6 space-y-4`}
         >
           {menuItems.map((item) => (
             <a 
