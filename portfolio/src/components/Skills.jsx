@@ -1,6 +1,7 @@
 import React from 'react'
-import { FaReact, FaNodeJs, FaJava, FaCode, FaSitemap, FaNetworkWired, FaLaptop} from "react-icons/fa";
-import { SiExpress, SiMongodb, SiTailwindcss, SiTypescript, SiJavascript, SiRedis, SiRedux } from "react-icons/si";
+import { FaReact, FaNodeJs, FaJava } from "react-icons/fa";
+import { SiExpress, SiMongodb, SiTailwindcss, SiTypescript, SiJavascript, SiRedis, SiRedux, SiWebrtc} from "react-icons/si";
+import { Webhook, Globe, Radio } from "lucide-react";
 import 'devicon/devicon.min.css';
 
 const Skills = () => {
@@ -11,13 +12,13 @@ const Skills = () => {
     { icon: <SiExpress />, name: "Express.js", color: "text-gray-400" },
     { icon: <SiMongodb />, name: "MongoDB", color: "text-green-500" },
     { icon: <SiRedis />, name: "Redis", color: "text-red-400" },
-    { icon: <FaSitemap />, name: "OOPs", color: "text-blue-500" },
-    { icon: <FaCode />, name: "DSA", color: "text-amber-500" },
+    { icon: <Radio/>, name: "WebSocket", color: "text-green-500" },
     { icon: <FaJava />, name: "Java", color: "text-yellow-500" },
     { icon: <SiTypescript />, name: "TypeScript", color: "text-blue-500" },
     { icon: <SiJavascript />, name: "JavaScript", color: "text-yellow-500" },
-    { icon: <FaNetworkWired />, name: "Computer Network", color: "text-gray-400" },
-    { icon: <FaLaptop /> , name: "Operating System", color: "text-red-400" },
+    { icon: <Globe />, name: "Rest APIs", color: "text-indigo-500" },
+    { icon: <Webhook />, name: "Webhooks", color: "text-blue-400" },
+    { icon: <SiWebrtc />, name: "WebRTC", color: "text-blue-500" },
     { icon: <SiRedux />, name: "Redux", color: "text-blue-500" },
   ];
 
@@ -48,12 +49,12 @@ const Skills = () => {
       ]
     },
     {
-      title: "Core Engineering",
+      title: "Technologies/APIs",
       skills: [
-        { icon: <FaSitemap />, name: "OOPs", color: "text-blue-500", glowClass: "hover:shadow-[0_0_20px_rgba(59,130,246,0.25)] hover:border-blue-500/50" },
-        { icon: <FaCode />, name: "DSA", color: "text-amber-500", glowClass: "hover:shadow-[0_0_20px_rgba(245,158,11,0.25)] hover:border-amber-500/50" },
-        {icon :<FaNetworkWired />, name: "Computer Network", color: "text-gray-400", glowClass: "hover:shadow-[0_0_20px_rgba(156,163,175,0.25)] hover:border-gray-400/50" },
-        {icon :<FaLaptop />, name: "Operating System", color: "text-red-400", glowClass: "hover:shadow-[0_0_20px_rgba(239,68,68,0.25)] hover:border-red-400/50" },
+        { icon: <Globe />, name: "Rest APIs", color: "text-indigo-500", glowClass: "hover:shadow-[0_0_20px_rgba(99,102,241,0.25)] hover:border-indigo-500/50" },
+        { icon: <Radio />, name: "WebSockets", color: "text-amber-500", glowClass: "hover:shadow-[0_0_20px_rgba(245,158,11,0.25)] hover:border-amber-500/50" },
+        {icon :<SiWebrtc />, name: "WebRTC", color: "text-green-500", glowClass: "hover:shadow-[0_0_20px_rgba(16,185,129,0.25)] hover:border-emerald-500/50" },
+        {icon :<Webhook />, name: "Webhooks", color: "text-blue-400", glowClass: "hover:shadow-[0_0_20px_rgba(59,130,246,0.25)] hover:border-blue-400/50" },
       ]
     }
   ];
@@ -72,7 +73,7 @@ const Skills = () => {
         </div>
         
         {/* Infinite Scrolling Marquee */}
-        <div className="overflow-hidden w-full py-6 mb-12 relative before:absolute before:left-0 before:top-0 before:z-10 before:h-full before:w-8 sm:w-20 before:bg-gradient-to-r before:from-[#030712] before:to-transparent after:absolute after:right-0 after:top-0 after:z-10 after:h-full after:w-8 sm:w-20 after:bg-gradient-to-l after:from-[#030712] after:to-transparent">
+        <div className="overflow-hidden w-full py-6 mb-12 relative before:absolute before:left-0 before:top-0 before:z-10 before:h-full before:w-8 sm:before:w-20 before:bg-gradient-to-r before:from-[#030712] before:to-transparent after:absolute after:right-0 after:top-0 after:z-10 after:h-full after:w-8 sm:after:w-20 after:bg-gradient-to-l after:from-[#030712] after:to-transparent">
           <div className="flex w-max animate-scroll">
             {[...flatTech, ...flatTech].map((item, index) => (
               <div key={index} className="flex items-center gap-3.5 mx-8 text-white text-lg glass rounded-xl py-2.5 px-5 border border-white/5">
