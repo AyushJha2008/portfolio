@@ -1,6 +1,3 @@
-import { useEffect, useState } from "react";
-import Particles, { initParticlesEngine } from "@tsparticles/react";
-import { loadSlim } from "@tsparticles/slim";
 import Contact from "./components/Contact";
 import Education from "./components/Education";
 import Events from "./components/Events";

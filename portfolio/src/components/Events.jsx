@@ -105,23 +105,28 @@ const Events = () => {
   const visibleEvents = showAll ? filteredEvents : filteredEvents.slice(0, 6);
 
   return (
-    <section id="hackathons" className="py-20 relative overflow-hidden">
-      {/* Glow effect */}
-      <div className="absolute top-1/2 left-0 w-[400px] h-[400px] bg-violet-600/5 rounded-full blur-[140px] pointer-events-none"></div>
+    <section id="hackathons" className="py-20 bg-slatebg blueprint-grid-bg border-t border-gray-800 relative">
+      
+      {/* Schematic border decoration */}
+      <div className="absolute top-0 left-10 font-mono text-[9px] text-gray-700 select-none">
+        [MODULE: SCRAPBOOK_EVENTS]
+      </div>
 
       <div className="container mx-auto px-4 sm:px-6 relative z-10">
-        <div className="flex flex-col justify-between items-center mb-12">
-          <div className="text-center">
-            <h2 className="text-3xl font-bold">
-              Tech <span className="text-gradient">Events</span>
+        
+        {/* Header Block */}
+        <div className="flex flex-col justify-between items-center mb-16">
+          <div className="text-center space-y-2">
+            <h2 className="text-3xl font-extrabold uppercase tracking-tight text-white sm:text-4xl">
+              Tech <span className="text-rust">Events</span>
             </h2>
-            <p className="text-gray-400 mt-2">
-              Hackathons and Meetups I've attended to learn and grow
+            <p className="text-gray-400 font-mono text-xs max-w-md mx-auto">
+              [GALLERY_OF_HACKATHONS_AND_DEVELOPER_MEETUPS]
             </p>
           </div>
 
-          {/* Filtering tabs */}
-          <div className="flex bg-white/5 border border-white/10 p-1.5 rounded-xl gap-2 mt-8">
+          {/* Filtering tabs with custom blueprint styling */}
+          <div className="flex bg-[#0e1116] border border-gray-800 p-1 rounded-sm gap-1 mt-8 font-mono text-xs">
             {["All", "Hackathon", "Meetup"].map((type) => (
               <button
                 key={type}
@@ -130,47 +135,70 @@ const Events = () => {
                   setActiveTab(type);
                   setShowAll(false);
                 }}
-                className={`px-5 py-2 rounded-lg text-sm font-semibold transition-all duration-300 ${
+                className={`px-5 py-2 transition-all ${
                   activeTab === type
-                    ? "bg-violet-600 text-white shadow-lg shadow-violet-600/20"
-                    : "text-gray-400 hover:text-white hover:bg-white/5"
+                    ? "bg-rust text-black font-bold shadow-[2px_2px_0px_#000]"
+                    : "text-gray-400 hover:text-white hover:bg-gray-900"
                 }`}
               >
-                {type === "All" ? "All" : type + "s"}
+                {type === "All" ? "ALL" : type.toUpperCase() + "S"}
               </button>
             ))}
           </div>
         </div>
 
-        {/* Gallery Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {visibleEvents.map((event, index) => (
-            <div 
-              key={index} 
-              className="relative group h-56 overflow-hidden rounded-2xl glass border border-white/5 shadow-lg hover:border-violet-500/30 transition-all duration-300"
-            >
-              <img 
-                src={event.image} 
-                alt={event.title} 
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-              />
-              
-              {/* Type Badge */}
-              <span className={`absolute top-4 left-4 z-20 text-xs px-2.5 py-1 rounded-md font-semibold ${
-                event.type === "Hackathon" 
-                  ? "bg-red-500/20 text-red-300 border border-red-500/30" 
-                  : "bg-blue-500/20 text-blue-300 border border-blue-500/30"
-              }`}>
-                {event.type}
-              </span>
+        {/* Gallery Grid with Asymmetrical rotational Polaroid cards */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 pb-4">
+          {visibleEvents.map((event, index) => {
+            // Apply slight rotation to create a organic scrapbook look (respect reduced motion)
+            const rotationClass = index % 3 === 0 
+              ? "md:-rotate-1" 
+              : index % 3 === 1 
+                ? "md:rotate-1" 
+                : "md:-rotate-0.5";
 
-              {/* Hover overlay with detail content */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/20 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-all duration-300 flex flex-col justify-end p-5">
-                <h3 className="text-white text-lg font-bold mb-1 tracking-wide">{event.title}</h3>
-                <p className="text-gray-300 text-xs md:text-sm leading-relaxed">{event.info}</p>
+            return (
+              <div 
+                key={index} 
+                className={`relative bg-[#0e1116] border border-gray-800 p-3.5 pb-6 shadow-[4px_4px_0px_#111827] hover:shadow-[5px_5px_0px_#f26a57] hover:border-rust hover:-translate-y-1 transition-all duration-200 overflow-hidden ${rotationClass} group`}
+              >
+                <div className="blueprint-scanline"></div>
+
+                {/* Photo Image Frame */}
+                <div className="relative aspect-[4/3] bg-[#08090c] border border-gray-800 overflow-hidden mb-4">
+                  <img 
+                    src={event.image} 
+                    alt={event.title} 
+                    className="w-full h-full object-cover grayscale contrast-[1.05] group-hover:grayscale-0 group-hover:scale-102 transition-all duration-300"
+                  />
+                  
+                  {/* Category Stamp Badge */}
+                  <span className={`absolute top-2 left-2 z-20 text-[9px] font-mono font-bold px-2 py-0.5 shadow-md ${
+                    event.type === "Hackathon" 
+                      ? "bg-red-950/80 text-red-400 border border-red-900" 
+                      : "bg-blue-950/80 text-blue-400 border border-blue-900"
+                  }`}>
+                    {event.type.toUpperCase()}
+                  </span>
+                </div>
+
+                {/* Polaroid caption - styled like handwriting index */}
+                <div className="text-left space-y-1.5 font-mono">
+                  <h3 className="text-white text-sm font-bold uppercase tracking-tight group-hover:text-rust transition-colors">
+                    {event.title}
+                  </h3>
+                  <p className="text-gray-400 text-[10px] leading-relaxed">
+                    {event.info}
+                  </p>
+                </div>
+
+                {/* Cosmetic stamp grid point */}
+                <span className="absolute bottom-1 right-2 font-mono text-[8px] text-gray-700">
+                  AJ_DOC_{index+1}
+                </span>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
         {/* Toggle Expand Button */}
@@ -179,9 +207,9 @@ const Events = () => {
             <button
               onClick={() => setShowAll(!showAll)}
               id="btn-toggle-events-gallery"
-              className="px-6 py-2.5 bg-white/5 border border-white/10 hover:border-violet-500/40 text-gray-300 hover:text-white rounded-xl transition-all duration-300 font-semibold text-sm shadow-md hover:shadow-violet-600/10"
+              className="px-6 py-3 bg-[#0e1116] border border-gray-800 hover:border-rust hover:bg-gray-900 text-gray-300 hover:text-white font-mono text-xs shadow-[3px_3px_0px_#000] hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-[2px_2px_0px_#000] transition-all cursor-pointer"
             >
-              {showAll ? "Show Less" : `View All (${filteredEvents.length})`}
+              {showAll ? "SHOW_LESS.TXT" : `VIEW_ALL_IMAGES.EXE (${filteredEvents.length})`}
             </button>
           </div>
         )}
@@ -191,3 +219,4 @@ const Events = () => {
 };
 
 export default Events;
+

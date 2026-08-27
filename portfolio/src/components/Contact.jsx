@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { FaEnvelope, FaMapMarkerAlt, FaGithub, FaLinkedin, FaPaperPlane, FaCheckCircle, FaExclamationTriangle } from 'react-icons/fa'
 
 const Contact = () => {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
@@ -30,98 +31,129 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-20 relative overflow-hidden">
-      {/* Background glow shadow */}
-      <div className="absolute bottom-0 right-1/4 w-[450px] h-[450px] bg-violet-600/5 rounded-full blur-[140px] pointer-events-none"></div>
+    <section id="contact" className="py-20 bg-slatebg blueprint-grid-bg border-t border-gray-800 relative">
+      {/* Decorative Blueprint Label */}
+      <div className="absolute top-0 right-10 font-mono text-[9px] text-gray-700 select-none">
+        [MODULE: WORK_ORDER_DISPATCH]
+      </div>
 
       <div className="container mx-auto px-4 sm:px-6 max-w-5xl relative z-10">
-        <div className="glass rounded-3xl p-5 sm:p-8 md:p-12 border border-white/10 shadow-[0_0_50px_rgba(139,92,246,0.05)]">
-          <div className="grid md:grid-cols-2 gap-12 items-start">
+        
+        {/* Main Card Frame */}
+        <div className="bg-[#0e1116] border border-gray-800 p-6 sm:p-10 md:p-14 shadow-[6px_6px_0px_#111827] hover:border-rust/85 hover:shadow-[6px_6px_0px_#f26a57] transition-all duration-300 relative group overflow-hidden">
+          
+          <div className="blueprint-scanline"></div>
+
+          {/* Diagnostic status tags */}
+          <div className="absolute -top-3 left-6 font-mono text-[9px] bg-[#0e1116] px-3 py-0.5 border border-gray-800 text-rust">
+            SYS_STATUS: ACTIVE_FOR_INQUIRIES
+          </div>
+
+          <div className="grid md:grid-cols-12 gap-12 items-start">
             
-            {/* Left Column: Info */}
-            <div className="text-left space-y-8">
-              <div>
-                <h2 className="text-3xl font-bold mb-4">
-                  Let's <span className="text-gradient">Connect</span>
+            {/* Left Column: Connection Details */}
+            <div className="md:col-span-5 text-left space-y-8">
+              
+              <div className="space-y-3">
+                <h2 className="text-3xl font-extrabold uppercase tracking-tight text-white">
+                  Let's <span className="text-rust">Connect</span>
                 </h2>
-                <p className="text-gray-400 text-sm leading-relaxed max-w-sm">
-                  I am actively seeking internship opportunities or freelance projects. Send over a message and let's build something awesome together!
+                <p className="text-gray-400 text-xs font-mono max-w-sm leading-relaxed">
+                  [CURRENTLY_SEEKING_INTERNSHIPS_OR_CONTRACT_PROJECTS]
+                  <br className="mb-2" />
+                  Dispatch a message via the technical specification sheet on the right to sync coordinates.
                 </p>
               </div>
 
-              <div className="space-y-6">
-                <div className="flex items-center gap-4 group">
-                  <div className="w-12 h-12 rounded-xl bg-violet-600/10 border border-violet-500/20 flex items-center justify-center text-violet-400 group-hover:bg-violet-600 group-hover:text-white transition-all duration-300">
-                    <i className="fas fa-envelope text-lg"></i>
+              {/* Technical links channels */}
+              <div className="space-y-4 font-mono text-xs">
+                
+                <div className="p-3 bg-[#08090c] border border-gray-800 flex items-center gap-4 hover:border-rust/45 transition-colors">
+                  <div className="w-8 h-8 flex items-center justify-center text-rust bg-[#0e1116] border border-gray-805">
+                    <FaEnvelope className="w-4 h-4" />
                   </div>
                   <div>
-                    <h4 className="text-xs text-gray-500 font-semibold uppercase tracking-wider">Email Me</h4>
+                    <h4 className="text-[9px] text-gray-500 uppercase font-semibold">EMAIL_CHANNEL:</h4>
                     <a 
                       href="mailto:ayushsjha2008@gmail.com" 
                       id="contact-email-link"
-                      className="text-gray-300 hover:text-violet-400 transition-colors text-sm font-semibold"
+                      className="text-gray-300 hover:text-rust transition-colors font-bold"
                     >
                       ayushsjha2008@gmail.com
                     </a>
                   </div>
                 </div>
 
-                <div className="flex items-center gap-4 group">
-                  <div className="w-12 h-12 rounded-xl bg-violet-600/10 border border-violet-500/20 flex items-center justify-center text-violet-400 group-hover:bg-violet-600 group-hover:text-white transition-all duration-300">
-                    <i className="fas fa-map-marker-alt text-lg"></i>
+                <div className="p-3 bg-[#08090c] border border-gray-800 flex items-center gap-4 hover:border-rust/45 transition-colors">
+                  <div className="w-8 h-8 flex items-center justify-center text-rust bg-[#0e1116] border border-gray-805">
+                    <FaMapMarkerAlt className="w-4 h-4" />
                   </div>
                   <div>
-                    <h4 className="text-xs text-gray-500 font-semibold uppercase tracking-wider">Location</h4>
-                    <p className="text-gray-300 text-sm font-semibold">Thane, Maharashtra, India</p>
+                    <h4 className="text-[9px] text-gray-500 uppercase font-semibold">COORDINATES:</h4>
+                    <p className="text-gray-300 font-bold">Thane, MH, India</p>
                   </div>
                 </div>
+
               </div>
 
-              {/* Social links */}
-              <div className="pt-4 border-t border-white/5">
-                <h4 className="text-xs text-gray-500 font-semibold uppercase tracking-wider mb-4">On the web</h4>
-                <div className="flex gap-4 text-2xl">
+              {/* Social Channels */}
+              <div className="pt-6 border-t border-gray-800 space-y-3">
+                <h4 className="text-[9px] text-gray-500 uppercase font-mono tracking-wider">NET_ROUTING:</h4>
+                <div className="flex gap-3">
                   <a 
                     href="https://github.com/AyushJha2008" 
                     id="contact-social-github"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-10 h-10 rounded-xl bg-white/5 border border-white/5 hover:border-white/20 flex items-center justify-center text-gray-400 hover:text-white transition-all transform hover:-translate-y-1"
-                    title="GitHub Profile"
+                    className="w-10 h-10 bg-[#08090c] border border-gray-800 hover:border-rust hover:text-rust flex items-center justify-center text-gray-400 transition-colors shadow-[2px_2px_0px_#000] hover:translate-y-[-1px]"
+                    title="GitHub Repository"
                   >
-                    <i className="fab fa-github text-lg"></i>
+                    <FaGithub className="w-4 h-4" />
                   </a>
                   <a 
                     href="https://www.linkedin.com/in/ayush-jha200805/" 
                     id="contact-social-linkedin"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-10 h-10 rounded-xl bg-white/5 border border-white/5 hover:border-white/20 flex items-center justify-center text-gray-400 hover:text-blue-400 transition-all transform hover:-translate-y-1"
-                    title="LinkedIn Profile"
+                    className="w-10 h-10 bg-[#08090c] border border-gray-800 hover:border-rust hover:text-rust flex items-center justify-center text-gray-400 transition-colors shadow-[2px_2px_0px_#000] hover:translate-y-[-1px]"
+                    title="LinkedIn Network"
                   >
-                    <i className="fab fa-linkedin text-lg"></i>
+                    <FaLinkedin className="w-4 h-4" />
                   </a>
                 </div>
               </div>
+
             </div>
 
-            {/* Right Column: Form */}
-            <div className="bg-white/[0.02] border border-white/5 p-4 sm:p-6 md:p-8 rounded-2xl">
-              <form onSubmit={handleSubmit} className="space-y-5 text-left">
+            {/* Right Column: Work Order Dispatch Form */}
+            <div className="md:col-span-7 bg-[#08090c] border border-gray-800 p-5 sm:p-8 relative overflow-hidden group">
+              <div className="blueprint-scanline"></div>
+              <span className="absolute top-1 right-2 font-mono text-[8px] text-gray-700 select-none z-10">SPEC_SHEET_AJ_09</span>
+              
+              <form onSubmit={handleSubmit} className="space-y-6 text-left relative z-10">
+                
+                {/* Diagnostic feedback boxes */}
                 {errorMsg && (
-                  <div className="text-red-400 text-xs bg-red-500/10 border border-red-500/20 p-3 rounded-lg">
-                    {errorMsg}
+                  <div className="font-mono text-xs text-red-400 bg-red-950/30 border border-red-900 p-3.5 flex items-center gap-2">
+                    <FaExclamationTriangle className="w-4 h-4 shrink-0 text-red-500 animate-pulse" />
+                    <span>[STATUS_ERR]: {errorMsg}</span>
                   </div>
                 )}
+                
                 {submitSuccess && (
-                  <div className="text-emerald-400 text-xs bg-emerald-500/10 border border-emerald-500/20 p-3 rounded-lg flex items-center gap-2">
-                    <i className="fas fa-check-circle text-sm"></i> 
-                    <span>Sent! I'll get back to you soon.</span>
+                  <div className="font-mono text-xs text-emerald-400 bg-emerald-950/30 border border-emerald-900 p-3.5 flex items-center gap-2">
+                    <FaCheckCircle className="w-4 h-4 shrink-0 text-emerald-400" />
+                    <span>[STATUS_OK]: DISPATCH_SENT.TXT SUCCESSFULLY TRANSFERRED.</span>
                   </div>
                 )}
 
-                <div>
-                  <label htmlFor="form-name" className="block text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Name</label>
+                <div className="space-y-2">
+                  <label 
+                    htmlFor="form-name" 
+                    className="block font-mono text-[10px] font-bold text-gray-500 uppercase tracking-widest"
+                  >
+                    [01] SENDER_NAME.TXT
+                  </label>
                   <input
                     type="text"
                     id="form-name"
@@ -129,13 +161,18 @@ const Contact = () => {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white text-sm focus:border-violet-500 focus:ring-1 focus:ring-violet-500 focus:bg-white/10 outline-none transition-all"
-                    placeholder="Your Name"
+                    className="w-full bg-[#0e1116] border border-gray-800 rounded-none px-4 py-3 text-white text-sm focus:border-rust outline-none transition-all font-mono placeholder:text-gray-700"
+                    placeholder="[ENTER_SENDER_NAME]"
                   />
                 </div>
 
-                <div>
-                  <label htmlFor="form-email" className="block text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Email</label>
+                <div className="space-y-2">
+                  <label 
+                    htmlFor="form-email" 
+                    className="block font-mono text-[10px] font-bold text-gray-500 uppercase tracking-widest"
+                  >
+                    [02] RETURN_EMAIL.TXT
+                  </label>
                   <input
                     type="email"
                     id="form-email"
@@ -143,13 +180,18 @@ const Contact = () => {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white text-sm focus:border-violet-500 focus:ring-1 focus:ring-violet-500 focus:bg-white/10 outline-none transition-all"
-                    placeholder="your.email@example.com"
+                    className="w-full bg-[#0e1116] border border-gray-800 rounded-none px-4 py-3 text-white text-sm focus:border-rust outline-none transition-all font-mono placeholder:text-gray-700"
+                    placeholder="[ENTER_RETURN_EMAIL]"
                   />
                 </div>
 
-                <div>
-                  <label htmlFor="form-message" className="block text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Message</label>
+                <div className="space-y-2">
+                  <label 
+                    htmlFor="form-message" 
+                    className="block font-mono text-[10px] font-bold text-gray-500 uppercase tracking-widest"
+                  >
+                    [03] MEMO_PAYLOAD_BODY.TXT
+                  </label>
                   <textarea
                     id="form-message"
                     name="message"
@@ -157,8 +199,8 @@ const Contact = () => {
                     onChange={handleChange}
                     required
                     rows="4"
-                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white text-sm focus:border-violet-500 focus:ring-1 focus:ring-violet-500 focus:bg-white/10 outline-none transition-all resize-none"
-                    placeholder="Describe your project, ideas, or internship details..."
+                    className="w-full bg-[#0e1116] border border-gray-800 rounded-none px-4 py-3 text-white text-sm focus:border-rust outline-none transition-all font-mono resize-none placeholder:text-gray-700"
+                    placeholder="[DESCRIBE_PROJECT_OR_INQUIRY_PARAMETERS...]"
                   />
                 </div>
 
@@ -166,17 +208,17 @@ const Contact = () => {
                   type="submit"
                   id="form-submit"
                   disabled={isSubmitting}
-                  className="w-full py-3 bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-500 hover:to-indigo-500 text-white font-bold rounded-xl transition-all shadow-[0_0_20px_rgba(139,92,246,0.15)] hover:shadow-[0_0_30px_rgba(139,92,246,0.3)] disabled:opacity-50 flex items-center justify-center gap-2 cursor-pointer"
+                  className="w-full py-3 bg-transparent border-2 border-rust text-rust hover:bg-rust hover:text-black font-bold font-mono text-xs tracking-wider transition-all shadow-[4px_4px_0px_#111827] hover:shadow-[2px_2px_0px_#000] hover:translate-x-[2px] hover:translate-y-[2px] disabled:opacity-50 flex items-center justify-center gap-2 cursor-pointer rounded-none"
                 >
                   {isSubmitting ? (
                     <>
-                      <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
-                      <span>Sending...</span>
+                      <span className="w-4 h-4 border-2 border-rust border-t-transparent rounded-full animate-spin"></span>
+                      <span>TRANSMITTING...</span>
                     </>
                   ) : (
                     <>
-                      <i className="fas fa-paper-plane text-xs"></i>
-                      <span>Send Message</span>
+                      <FaPaperPlane className="w-3.5 h-3.5" />
+                      <span>SUBMIT_DISPATCH.EXE</span>
                     </>
                   )}
                 </button>
@@ -185,10 +227,10 @@ const Contact = () => {
 
           </div>
         </div>
+      </div>
 
-        <div className="text-center mt-12 text-xs text-gray-600">
-          &copy; {new Date().getFullYear()} Ayush Jha. All rights reserved.
-        </div>
+      <div className="text-center mt-16 text-[10px] font-mono text-gray-600 select-none">
+        &copy; {new Date().getFullYear()} Ayush Jha. All rights reserved. // SECURE_SHELL_EST
       </div>
     </section>
   )

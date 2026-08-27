@@ -1,42 +1,162 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@layer components{
-    .glass {
-            background: rgba(17, 24, 39, 0.7);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            /* background: #CCDA47; */
-        }
-        
-        .glass-hover:hover {
-            border-color: rgba(139, 92, 246, 0.5);
-            box-shadow: 0 0 30px -5px rgba(139, 92, 246, 0.15);
-        }
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    background-color: #08090c;
+  }
+  body {
+    font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: #08090c;
+    color: #f3f4f6;
+  }
+  code, pre, .font-mono {
+    font-family: 'Space Mono', monospace !important;
+  }
+}
 
-        /* Text Gradient */
+@layer components {
+  /* Tactile 2D Blueprint style cards */
+  .blueprint-card {
+    background-color: #0e1014;
+    border: 1.5px solid #1f2937;
+    box-shadow: 4px 4px 0px 0px #111827;
+    position: relative;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  
+  .blueprint-card-hover:hover {
+    transform: translate(-3px, -3px);
+    box-shadow: 7px 7px 0px 0px #f26a57;
+    border-color: #f26a57;
+  }
+  
+  .blueprint-card-accent {
+    background-color: #0e1014;
+    border: 1.5px solid #f26a57;
+    box-shadow: 4px 4px 0px 0px #f26a57;
+  }
 
-        .text-gradient {
-            background: linear-gradient(to right, #c084fc, #6366f1);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+  .blueprint-border-double {
+    border: 4px double #1f2937;
+  }
+  
+  .blueprint-border-double-accent {
+    border: 4px double #f26a57;
+  }
 
+  /* Retro paper/drawing grid background lines (very subtle) */
+  .blueprint-grid-bg {
+    background-size: 24px 24px;
+    background-image: 
+      linear-gradient(to right, rgba(31, 41, 55, 0.15) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(31, 41, 55, 0.15) 1px, transparent 1px);
+  }
 
-        /* Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #030712; 
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #374151; 
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #4b5563; 
-            /* background-color: rgba(255, 163, 92, 0.857); */
-        }
+  /* Maintaining legacy support while transforming style properties */
+  .glass {
+    background-color: #0e1014;
+    border: 1.5px solid #1f2937;
+    box-shadow: 4px 4px 0px 0px #111827;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  
+  .glass-hover:hover {
+    transform: translate(-3px, -3px);
+    box-shadow: 7px 7px 0px 0px #f26a57;
+    border-color: #f26a57;
+  }
+
+  .text-gradient {
+    background: linear-gradient(to right, #ffffff, #f26a57);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Scrollbar overrides */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #08090c; 
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #1f2937; 
+    border-radius: 0px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #f26a57; 
+  }
+
+  /* Snap transition curves for blueprint elements */
+  .blueprint-snap-transition {
+    transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+
+  /* Scanline Animation */
+  @keyframes blueprint-scan {
+    0% {
+      top: -10%;
+    }
+    100% {
+      top: 110%;
+    }
+  }
+
+  .blueprint-scanline {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(
+      to bottom,
+      transparent,
+      rgba(242, 106, 87, 0.3) 50%,
+      transparent
+    );
+    pointer-events: none;
+    opacity: 0;
+    z-index: 20;
+    transition: opacity 0.2s ease;
+  }
+
+  /* Trigger scanline on card hover */
+  .blueprint-card:hover .blueprint-scanline,
+  .group:hover .blueprint-scanline,
+  button:hover .blueprint-scanline {
+    opacity: 1;
+    animation: blueprint-scan 2s linear infinite;
+  }
+
+  /* Grid Calibration Entry Animation */
+  @keyframes grid-calibration {
+    0% {
+      opacity: 0;
+      background-size: 40px 40px;
+    }
+    100% {
+      opacity: 1;
+      background-size: 24px 24px;
+    }
+  }
+
+  .blueprint-grid-bg {
+    animation: grid-calibration 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  /* Text scanline flicker effect */
+  @keyframes text-flicker {
+    0%, 100% { opacity: 1; }
+    98% { opacity: 1; }
+    99% { opacity: 0.6; }
+  }
+  
+  .schematic-text-pulse {
+    animation: text-flicker 5s infinite;
+  }
 }
