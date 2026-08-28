@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import myself from '../assets/myself1.png'
+import resumePdf from '../public/Ayush_Resume.pdf'
 
 const Hero = () => {
   const [isSchematicActive, setIsSchematicActive] = useState(false);
@@ -99,7 +100,7 @@ const Hero = () => {
               {/* Core blueprint action buttons */}
               <div className="flex flex-wrap gap-3 font-mono text-xs">
                 <a 
-                  href="https://drive.google.com/file/d/1aXAS7ZBgTv5oo59pE-Ijio98vT4QMLJ_/view?usp=sharing" 
+                  href={resumePdf} 
                   id="hero-btn-resume"
                   target="_blank"
                   rel="noopener noreferrer"
