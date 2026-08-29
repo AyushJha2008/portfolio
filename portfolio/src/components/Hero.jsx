@@ -37,16 +37,31 @@ const Hero = () => {
           {/* Left Column: Dossier Text Content (7 cols on large screens) */}
           <div className="md:col-span-7 text-left space-y-8 relative">
             
-            {/* Index code badge */}
-            <div className="inline-flex items-center gap-3 font-mono text-[11px] bg-[#111319] border border-gray-800 text-gray-400 px-3 py-1.5 shadow-[2px_2px_0px_#000] relative">
-              <span className="w-1.5 h-1.5 bg-rust rounded-full animate-pulse"></span>
-              <span>INDEX: FP_AYUSH_JHA.TXT</span>
-              
-              {/* Connector dot */}
-              {isSchematicActive && (
-                <span className="absolute -right-3 top-1/2 w-2 h-[2px] bg-rust"></span>
-              )}
-            </div>
+            {/* Quick Info Block */}
+              <div className="inline-flex w-fit items-center gap-3.5 px-4 py-3 border border-gray-800 bg-[#0e1116] text-gray-400 font-mono text-xs self-start">
+                <p className="text-[10px] text-gray-500 uppercase">SYS_LINKS:</p>
+                <a 
+                  href="https://www.linkedin.com/in/ayush-jha200805/" 
+                  id="hero-link-linkedin"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-blue-500 transition-colors"
+                  title="LinkedIn Profile"
+                >
+                  <i className="fab fa-linkedin text-base"></i>
+                </a>
+                <p className="w-1.5 h-1.5 bg-gray-700 rounded-full"></p>
+                <a 
+                  href="https://github.com/AyushJha2008" 
+                  id="hero-link-github"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-rust transition-colors"
+                  title="GitHub Profile"
+                >
+                  <i className="fab fa-github text-base"></i>
+                </a>
+              </div>
 
             {/* Asymmetrical bold headline */}
             <div className="space-y-2 relative">
@@ -56,9 +71,9 @@ const Hero = () => {
                 </div>
               )}
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.1] uppercase">
-                Systems & <br />
+                SaaS & <br />
                 <span className="text-rust underline decoration-double decoration-gray-700 underline-offset-8">
-                  Full-Stack Build
+                  FullStack_Dev
                 </span>
               </h1>
             </div>
@@ -106,7 +121,7 @@ const Hero = () => {
                   rel="noopener noreferrer"
                   className="px-6 py-3.5 bg-rust text-black border border-black hover:bg-transparent hover:text-rust hover:border-rust transition-all font-bold shadow-[4px_4px_0px_#000] hover:shadow-[0px_0px_0px_#000] hover:translate-x-[2px] hover:translate-y-[2px] text-center"
                 >
-                  DOWNLOAD_RESUME.PDF
+                  RESUME.PDF
                 </a>
                 <a 
                   href="https://github.com/AyushJha2008" 
@@ -116,32 +131,6 @@ const Hero = () => {
                   className="px-6 py-3.5 bg-[#0e1116] border border-gray-800 text-gray-300 hover:text-white hover:border-rust hover:bg-gray-900 transition-all font-semibold shadow-[4px_4px_0px_#000] hover:shadow-[0px_0px_0px_#000] hover:translate-x-[2px] hover:translate-y-[2px] text-center flex items-center justify-center gap-2"
                 >
                   <i className="fab fa-github"></i> GITHUB_CORE
-                </a>
-              </div>
-
-              {/* Quick Info Block */}
-              <div className="flex items-center gap-3.5 px-4 py-3 border border-gray-800 bg-[#0e1116] text-gray-400 font-mono text-xs">
-                <span className="text-[10px] text-gray-500 uppercase">SYS_LINKS:</span>
-                <a 
-                  href="https://www.linkedin.com/in/ayush-jha200805/" 
-                  id="hero-link-linkedin"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-rust transition-colors"
-                  title="LinkedIn Profile"
-                >
-                  <i className="fab fa-linkedin text-base"></i>
-                </a>
-                <span className="w-1.5 h-1.5 bg-gray-700 rounded-full"></span>
-                <a 
-                  href="https://github.com/AyushJha2008" 
-                  id="hero-link-github"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-rust transition-colors"
-                  title="GitHub Profile"
-                >
-                  <i className="fab fa-github text-base"></i>
                 </a>
               </div>
 
@@ -244,4 +233,4 @@ const Hero = () => {
   )
 }
 
-export default Hero
+export default Hero
