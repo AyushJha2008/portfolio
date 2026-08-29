@@ -164,14 +164,9 @@ const Projects = () => {
             {featuredProjects.map((project, idx) => (
               <div 
                 key={project.id} 
-                className="bg-[#0e1116] border border-gray-800 p-5 sm:p-8 shadow-[4px_4px_0px_#111827] hover:shadow-[5px_5px_0px_#f26a57] hover:border-rust transition-all duration-300 relative group overflow-hidden"
+                className="bg-[#0e1116] border border-gray-800 p-5 sm:p-8 sm:pt-10 shadow-[4px_4px_0px_#111827] hover:shadow-[5px_5px_0px_#f26a57] hover:border-rust transition-all duration-300 relative group overflow-hidden"
               >
                 <div className="blueprint-scanline"></div>
-
-                {/* Dossier Code Badge */}
-                <div className="absolute -top-3 left-4 font-mono text-[9px] bg-[#0e1116] px-2.5 py-0.5 border border-gray-800 text-rust z-10">
-                  REF_DOC: {project.dossierCode}
-                </div>
 
                 <div className="grid md:grid-cols-12 gap-8 items-center">
                   
@@ -275,14 +270,14 @@ const Projects = () => {
             {standardProjects.map((project, idx) => (
               <div 
                 key={project.id} 
-                className={`bg-[#0e1116] border border-gray-800 p-6 shadow-[4px_4px_0px_#111827] hover:shadow-[5px_5px_0px_#f26a57] hover:border-rust transition-all duration-300 text-left space-y-4 group relative overflow-hidden ${
+                className={`bg-[#0e1116] border border-gray-800 p-6 pt-10 shadow-[4px_4px_0px_#111827] hover:shadow-[5px_5px_0px_#f26a57] hover:border-rust transition-all duration-300 text-left space-y-4 group relative overflow-hidden ${
                   idx % 2 === 1 ? "md:translate-y-4" : ""
                 }`}
               >
                 <div className="blueprint-scanline"></div>
 
                 {/* Dossier Code Badge */}
-                <div className="absolute -top-3 left-4 font-mono text-[9px] bg-[#0e1116] px-2 py-0.5 border border-gray-800 text-gray-500 z-10">
+                <div className="absolute top-3 left-4 font-mono text-[9px] bg-[#0e1116] px-2 py-0.5 border border-gray-800 text-gray-500 z-10">
                   DOC_ID: {project.dossierCode}
                 </div>
 
@@ -357,4 +352,4 @@ const Projects = () => {
   )
 }
 
-export default Projects
+export default Projects

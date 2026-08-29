@@ -69,15 +69,9 @@ const Skills = () => {
           {skillCategories.map((category, catIdx) => (
             <div 
               key={catIdx} 
-              className="bg-[#0e1116] border border-gray-800 p-5 sm:p-6 shadow-[4px_4px_0px_#111827] relative group hover:border-rust/60 hover:shadow-[4px_4px_0px_#f26a57] transition-all duration-300 overflow-hidden"
+              className="bg-[#0e1116] border border-gray-800 p-5 sm:p-6 sm:pt-10 shadow-[4px_4px_0px_#111827] relative group hover:border-rust/60 hover:shadow-[4px_4px_0px_#f26a57] transition-all duration-300 overflow-hidden"
             >
               <div className="blueprint-scanline"></div>
-
-              {/* Drawer Tag Badge */}
-              <div className="absolute -top-3 left-4 font-mono text-[9px] bg-[#0e1116] px-2 py-0.5 border border-gray-800 text-rust z-10">
-                SYS: {category.drawerId}
-              </div>
-
               {/* Title */}
               <h3 className="font-mono text-xs font-bold mb-6 text-gray-400 tracking-wider uppercase text-left flex items-center justify-between">
                 <span>{category.title}</span>

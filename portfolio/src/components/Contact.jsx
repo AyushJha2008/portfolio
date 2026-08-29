@@ -40,22 +40,17 @@ const Contact = () => {
       <div className="container mx-auto px-4 sm:px-6 max-w-5xl relative z-10">
         
         {/* Main Card Frame */}
-        <div className="bg-[#0e1116] border border-gray-800 p-6 sm:p-10 md:p-14 shadow-[6px_6px_0px_#111827] hover:border-rust/85 hover:shadow-[6px_6px_0px_#f26a57] transition-all duration-300 relative group overflow-hidden">
+        <div className="bg-[#0e1116] border border-gray-800 p-4 sm:p-10 sm:pt-12 md:p-14 md:pt-14 shadow-[6px_6px_0px_#111827] hover:border-rust/85 hover:shadow-[6px_6px_0px_#f26a57] transition-all duration-300 relative group overflow-hidden">
           
           <div className="blueprint-scanline"></div>
 
-          {/* Diagnostic status tags */}
-          <div className="absolute -top-3 left-6 font-mono text-[9px] bg-[#0e1116] px-3 py-0.5 border border-gray-800 text-rust">
-            SYS_STATUS: ACTIVE_FOR_INQUIRIES
-          </div>
-
-          <div className="grid md:grid-cols-12 gap-12 items-start">
+          <div className="grid md:grid-cols-12 gap-8 md:gap-12 items-start">
             
             {/* Left Column: Connection Details */}
-            <div className="md:col-span-5 text-left space-y-8">
+            <div className="md:col-span-5 text-left space-y-6 md:space-y-8 min-w-0">
               
               <div className="space-y-3">
-                <h2 className="text-3xl font-extrabold uppercase tracking-tight text-white">
+                <h2 className="text-2xl sm:text-3xl font-extrabold uppercase tracking-tight text-white">
                   Let's <span className="text-rust">Connect</span>
                 </h2>
                 <p className="text-gray-400 text-xs font-mono max-w-sm leading-relaxed">
@@ -67,17 +62,16 @@ const Contact = () => {
 
               {/* Technical links channels */}
               <div className="space-y-4 font-mono text-xs">
-                
                 <div className="p-3 bg-[#08090c] border border-gray-800 flex items-center gap-4 hover:border-rust/45 transition-colors">
                   <div className="w-8 h-8 flex items-center justify-center text-rust bg-[#0e1116] border border-gray-805">
                     <FaEnvelope className="w-4 h-4" />
                   </div>
-                  <div>
+                  <div className="min-w-0">
                     <h4 className="text-[9px] text-gray-500 uppercase font-semibold">EMAIL_CHANNEL:</h4>
-                    <a 
-                      href="mailto:ayushsjha2008@gmail.com" 
+                    <a
+                      href="mailto:ayushsjha2008@gmail.com"
                       id="contact-email-link"
-                      className="text-gray-300 hover:text-rust transition-colors font-bold"
+                      className="text-gray-300 hover:text-rust transition-colors font-bold break-all"
                     >
                       ayushsjha2008@gmail.com
                     </a>
@@ -126,7 +120,7 @@ const Contact = () => {
             </div>
 
             {/* Right Column: Work Order Dispatch Form */}
-            <div className="md:col-span-7 bg-[#08090c] border border-gray-800 p-5 sm:p-8 relative overflow-hidden group">
+            <div className="md:col-span-7 bg-[#08090c] border border-gray-800 p-4 sm:p-8 relative overflow-hidden group min-w-0">
               <div className="blueprint-scanline"></div>
               <span className="absolute top-1 right-2 font-mono text-[8px] text-gray-700 select-none z-10">SPEC_SHEET_AJ_09</span>
               
